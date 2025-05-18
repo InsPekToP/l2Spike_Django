@@ -1,0 +1,28 @@
+# Виртуальное окружение
+env/
+
+#Ключи
+.env
+
+#Settings.py
+settings.py
+
+# Файлы базы данных
+*.sqlite3
+
+# Логи
+#*.log
+
+# Статические файлы
+#static/
+
+# Папка с медиа-файлами
+#media/
+
+# Папка с миграциями
+migrations/
+
+# pycache
+__pycache__/
+*.pyc
+*.pyo
