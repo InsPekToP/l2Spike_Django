@@ -1,14 +1,203 @@
-{% extends 'homepage/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>L2Spike • Interlude • x50.000</title>
+
+<!-- SEO -->
+    <meta name="description" content="L2Spike - Interlude x50'000 с уникальными дополнениями. Открой для себя новый мир Lineage 2! ОБТ уже запущен – не пропусти шанс стать частью эпической игры.">
+    <meta name="keywords" content="Lineage 2, L2Spike, Interlude, x50.000, ОБТ, ЗБТ, уникальные дополнения, MMORPG, сервер Lineage 2, Lineage 2 сервер, игра онлайн">
+    <meta name="author" content="InsPekToP">
+
+
+<!-- Фавиконы -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon180x180.png">
+    <!-- <link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon167x167.png"> -->
+    <!-- <link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon120x120.png"> -->
+
+<!-- Open Graph -->
+    <meta property="og:site_name" content="L2Spike.com">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:title" content="L2Spike: Interlude x50'000 – Уникальный сервер Lineage 2">
+    <meta property="og:description" content="Присоединяйтесь к L2Spike: Interlude x50'000 с уникальными дополнениями. ЗБТ уже запущен – успей стать частью нового игрового мира!">
+    <meta property="og:image" content="https://inspektop.github.io/L2spike/assets/image/logo.png">
+    <!-- <meta property="og:image" content="https://L2spike.com/assets/image/logo.png"> -->
+    <meta property="og:image:alt" content="L2Spike: Interlude x50'000 – Уникальный сервер Lineage 2">
+    <meta property="og:url" content="https://L2Spike.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:secure_url" content="https://inspektop.github.io/L2spike/assets/image/logo.png"> 
+
+
+<!-- Twitter -->
+    <meta name="twitter:site" content="L2Spike">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="L2Spike: Interlude x50'000 – Уникальный сервер Lineage 2">
+    <meta name="twitter:description" content="Окунитесь в мир L2Spike: Interlude x50'000 с уникальными дополнениями. ЗБТ уже запущен – начните свое приключение прямо сейчас!">
+    <meta name="twitter:image" content="https://inspektop.github.io/L2spike/assets/image/logo.png">
+
+<!-- Microsoft -->
+    <meta name="msapplication-TileColor" content="#262635">
+    <meta name="theme-color" content="#262635">
+    <meta name="msapplication-TileImage" content="https://inspektop.github.io/L2spike/favicon-32x32.png">
+    <!-- <meta name="msapplication-config" content="https://inspektop.github.io/L2spike/browserconfig.xml"> -->
+
+<!-- favicon svg -->
+    <!-- <link rel="shortcut icon" href="./favicon2.svg" type="image/svg+xml"> -->
+
+<!-- custom css link -->
+    <link rel="stylesheet" href="{% static 'homepage/assets/css/style.css' %}">
+
+<!-- Goodle fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+<!-- preload images -->
+
+
+</head>
+<body id="top">
+<!-- HEADER -->
+    <header class="header">
+
+        <div class="header-top">
+            <div class="container">
+
+                <div class="countdown-text">
+                    Здесь рождаются легенды!
+                    <!-- <span class="span skewBg">10</span>Days -->
+                </div>
+
+                <div class="social-wrapper">
+
+                    <p class="social-title">Будьте в курсе новостей :</p>
+
+                    <ul class="social-list">
+                        <li>
+                            <a href="https://t.me/l2spikecom" target="_blank" class="social-link">
+                                <ion-icon name="paper-plane"></ion-icon>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://discord.gg/pSQJGDmryB" target="_blank" class="social-link">
+                                <ion-icon name="logo-discord"></ion-icon>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://tiktok.com/@l2_spike?_t=ZN-8uYyVm5kClm&_r=1" target="_blank" class="social-link">
+                                <ion-icon name="logo-tiktok"></ion-icon>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.youtube.com/@L2spikecom" target="_blank" class="social-link">
+                                <ion-icon name="logo-youtube"></ion-icon>
+                            </a>
+                        </li>
+                        
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="header-bottom skewBg" data-header>
+            <div class="container">
+
+                <a href="/" class="logo">L2Spike</a>
+
+                <nav class="navbar" data-navbar>
+                    <ul class="navbar-list">
+                        <li class="navbar-item">
+                            <a href="#home" class="navbar-link skewBg" data-nav-link>Главная</a>
+                        </li>
+
+                        <li class="navbar-item">
+                            <a href="#download" class="navbar-link skewBg" data-nav-link>Файлы</a>
+                        </li>
+
+                        <li class="navbar-item">
+                            <a href="about.html"  class="navbar-link skewBg" data-nav-link>О сервере</a>
+                        </li>
+
+                        <li class="navbar-item">
+                            <a href="news.html" class="navbar-link skewBg" data-nav-link>Новости</a>
+                        </li>
+
+                    </ul>
+                </nav>
+                
+
+                <div class="header-actions">
+                    
+
+                    <a href="#download">
+                        <button class="download-btn" aria-label="download">
+                            <ion-icon name="download-outline"></ion-icon>
+
+                            <!-- <span class="cart-badge">0</span> -->
+                        </button>
+                    </a>
+                    
+                
+                    <!-- <button class="person-btn" aria-label="person register" data-search-toggler>
+                        <ion-icon name="person-outline"></ion-icon>
+                    </button> -->
+
+                    <button class="nav-toggle-btn" aria-label="toggle menu" data-nav-toggler>
+                        <ion-icon name="menu-outline" class="menu"></ion-icon>
+                        <ion-icon name="close-outline" class="close"></ion-icon>
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </header>
 
 
 
-{% block content %}
+<!-- REGISTER BOX -->
+
+
+<div class="register-container" data-search-box>
+
+    <div class="input-wrapper">
+        <input type="register" name="register" aria-label="register" placeholder="Скоро..." class="register-field">
+
+        <button class="register-submit" aria-label="register persons" data-search-toggler>
+            <ion-icon name="person-outline"></ion-icon>
+        </button>
+
+        <button class="register-close" aria-label="close register" data-search-toggler></button>
+    </div>
+    
+</div>
+
+<!--END REGISTER BOX -->
+
+
+
 <main>
     <article>
 
     <!-- HERO -->
 
-        <section class="section hero" id="home" aria-label="home" style="background-image: url('./homepage/assets/image/hero_bg.png');">
+        <section class="section hero" id="home" aria-label="home" style="background-image: url('./assets/image/hero_bg.png');">
             <div class="container">
 
                 <div class="hero-content">
@@ -28,7 +217,7 @@
                 </div>
 
                 <figure class="hero-banner img-holder" style="--width: 700 ;--height: 700 ;">
-                    <img src="{% static 'assets/image/hero_banner1.png' %}" width="700" height="700" alt="hero banner" class="w-100">
+                    <img src="./assets/image/hero_banner1.png" width="700" height="700" alt="hero banner" class="w-100">
                 </figure>
 
             </div>
@@ -404,4 +593,146 @@
     </article>
 </main>
 
-{% endblock %}
+
+
+
+<!-- FOOTER -->
+
+
+<footer class="footer" id="contact">
+
+    <div class="footer-top">
+        <div class="container">
+
+            <div class="footer-brand">
+
+                <a href="/" class="logo">L2Spike.com</a>
+
+            </div>
+
+            <ul class="footer-list">
+
+                <li>
+                    <p class="footer-list-title">Разделы сайта:</p>
+                </li>
+
+                <li>
+                    <a href="#home" class="footer-link">Главная</a>
+                </li>
+
+                <li>
+                    <a href="#download" class="footer-link">Файлы</a>
+                </li>
+                
+                <li>
+                    <a href="#instruction" class="footer-link">Инструкция по установке</a>
+                </li>
+
+                <li>
+                    <a href="about.html" class="footer-link">О сервере</a>
+                </li>
+
+                <li>
+                    <a href="news.html" class="footer-link">Новости</a>
+                </li>
+
+            </ul>
+
+            <ul class="footer-list">
+
+                <li>
+                    <p class="footer-list-title">Полезные ссылки:</p>
+                </li>
+
+                <li>
+                    <a href="https://drive.google.com/file/d/1iwuCteEMiIrnz7s6mhDp9xCR89xUeDOT/view?usp=sharing" target="_blank" class="footer-link">Клиент игры</a>
+                </li>
+
+                <li>
+                    <a href="https://drive.google.com/file/d/1_VjNsw4MvckLfJjK8_8UzG0hVKb9NTMY/view?usp=sharing" target="_blank" class="footer-link">Patch игры</a>
+                </li>
+                
+
+            </ul>
+
+            <div class="footer-wrapper">
+
+                <div class="social-wrapper">
+                    <p class="footer-list-title">Связаться с нами:</p>
+
+                    <ul class="social-list">
+
+                        <li>
+                            <a href="https://t.me/l2spikecom" target="_blank" class="social-link" style="background-color: #0088cc;">
+                                <ion-icon name="paper-plane"></ion-icon>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://discord.gg/pSQJGDmryB" target="_blank" class="social-link" style="background-color: #7289DA;">
+                                <ion-icon name="logo-discord"></ion-icon>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://tiktok.com/@l2_spike?_t=ZN-8uYyVm5kClm&_r=1" target="_blank" class="social-link" style="background-color: #010101;">
+                                <ion-icon name="logo-tiktok"></ion-icon>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.youtube.com/@L2spikecom" target="_blank" class="social-link" style="background-color: #FF0000;">
+                                <ion-icon name="logo-youtube"></ion-icon>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container">
+
+            <p class="copiringht">
+                &copy; 2025 L2Spike. All Right Reserved by 
+                
+                <a href="https://inspektop.github.io/Portfolio" target="_blank" class="copyright-link">InsPekToP & GZU</a>
+            </p>
+
+            <!-- <img src="./assets/images/footer-bottom-img.png" width="340" height="21" alt="" class="footer-bottom-img"> -->
+
+        </div>
+    </div>
+
+</footer>
+
+
+
+<!-- BACK TO TOP -->
+
+
+<a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+    <ion-icon name="caret-up"></ion-icon>
+</a>
+
+
+
+
+
+
+
+
+
+<!-- custom js link -->
+    <script src="./assets/js/script.js" defer></script>
+
+<!-- ionicon link -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>
