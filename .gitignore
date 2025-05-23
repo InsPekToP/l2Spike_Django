@@ -7,6 +7,9 @@ env/
 #Settings.py
 settings.py
 
+#Настройки VSCode
+.vscode
+
 # Файлы базы данных
 *.sqlite3
 
