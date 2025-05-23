@@ -1,6 +1,6 @@
 {% extends 'homepage/base.html' %}
 
-
+{%load static %}
 
 {% block content %}
 <main>
@@ -8,7 +8,7 @@
 
     <!-- HERO -->
 
-        <section class="section hero" id="home" aria-label="home" style="background-image: url('./homepage/assets/image/hero_bg.png');">
+        <section class="section hero" id="home" aria-label="home" style="background-image: url('{% static 'homepage/assets/image/hero_bg.png' %}');">
             <div class="container">
 
                 <div class="hero-content">
@@ -28,7 +28,7 @@
                 </div>
 
                 <figure class="hero-banner img-holder" style="--width: 700 ;--height: 700 ;">
-                    <img src="{% static 'assets/image/hero_banner1.png' %}" width="700" height="700" alt="hero banner" class="w-100">
+                    <img src="{% static 'homepage/assets/image/hero_banner1.png' %}" width="700" height="700" alt="hero banner" class="w-100">
                 </figure>
 
             </div>
@@ -44,26 +44,26 @@
                 <ul class="has-scrollbar">
 
                     <li class="brand-item">
-                        <img src="./assets/image/brand_1.png" width="90" height="90" loading="lazy" alt="brand logo">
+                        <img src="{% static 'homepage/assets/image/brand_1.png' %}" width="90" height="90" loading="lazy" alt="brand logo">
                     </li>
 
                     <li class="brand-item">
-                        <img src="./assets/image/brand_2.png" width="90" height="90" loading="lazy" alt="brand logo">
+                        <img src="{% static 'homepage/assets/image/brand_2.png' %}" width="90" height="90" loading="lazy" alt="brand logo">
                     </li>
 
                     <li class="brand-item">
-                        <img src="./assets/image/brand_3.png" width="90" height="90" loading="lazy" alt="brand logo">
+                        <img src="{% static 'homepage/assets/image/brand_3.png' %}" width="90" height="90" loading="lazy" alt="brand logo">
                     </li>
 
                     <li class="brand-item">
-                        <img src="./assets/image/brand_4.png" width="90" height="90" loading="lazy" alt="brand logo">
+                        <img src="{% static 'homepage/assets/image/brand_4.png' %}" width="90" height="90" loading="lazy" alt="brand logo">
                     </li>
                     <li class="brand-item">
-                        <img src="./assets/image/brand_5.png" width="90" height="90" loading="lazy" alt="brand logo">
+                        <img src="{% static 'homepage/assets/image/brand_5.png' %}" width="90" height="90" loading="lazy" alt="brand logo">
                     </li>
 
                     <li class="brand-item">
-                        <img src="./assets/image/brand_6.png" width="90" height="90" loading="lazy" alt="brand logo">
+                        <img src="{% static 'homepage/assets/image/brand_6.png' %}" width="90" height="90" loading="lazy" alt="brand logo">
                     </li>
 
                 </ul>
@@ -96,7 +96,7 @@
                             <div class="download-card">
 
                                 <figure class="card-banner img-holder" style="--width: 300; --height: 260;">
-                                    <img src="./assets/image/dwn_client_1.jpg" width="300" height="260" loading="lazy" alt="Download client" class="img-cover">
+                                    <img src="{% static 'homepage/assets/image/dwn_client_1.jpg' %}" width="300" height="260" loading="lazy" alt="Download client" class="img-cover">
                                 </figure>
 
                                 <div class="card-content">
@@ -127,7 +127,7 @@
                             <div class="download-card">
 
                                 <figure class="card-banner img-holder" style="--width: 300; --height: 260;">
-                                    <img src="./assets/image/dwn_patch_2.jpg" width="300" height="260" loading="lazy" alt="Download Patch" class="img-cover">
+                                    <img src="{% static 'homepage/assets/image/dwn_patch_2.jpg' %}" width="300" height="260" loading="lazy" alt="Download Patch" class="img-cover">
                                 </figure>
 
                                 <div class="card-content">
@@ -158,7 +158,7 @@
                             <div class="download-card">
 
                                 <figure class="card-banner img-holder" style="--width: 300; --height: 260;">
-                                    <img src="./assets/image/dwn_login_3.jpg" width="300" height="260" loading="lazy" alt="Auto Registration" class="img-cover">
+                                    <img src="{% static 'homepage/assets/image/dwn_login_3.jpg' %}" width="300" height="260" loading="lazy" alt="Auto Registration" class="img-cover">
                                 </figure>
 
                                 <div class="card-content">
@@ -200,7 +200,7 @@
 
                     <figure class="instruction-video-banner img-holder" style="--width: 800; --height: 470;" id="videoWrapper">
                         
-                        <img src="./assets/image/instruction_banner.png" width="800" height="470" loading="lazy" alt="Install Video" class="img-cover">
+                        <img src="{% static 'homepage/assets/image/instruction_banner.png' %}" width="800" height="470" loading="lazy" alt="Install Video" class="img-cover">
 
                         <button class="play-btn" aria-label="play video" id="playButton">
                             <ion-icon name="play"></ion-icon>
@@ -248,7 +248,7 @@
                         <div class="blog-card">
 
                             <figure class="card-banner img-holder" style="--width: 400; --height: 290;">
-                                <img src="./assets/image/blog_1.png" width="400" height="290" loading="lazy" alt="Golden Set of Eternity – legendary armor" class="img-cover">
+                                <img src="{% static 'homepage/assets/image/blog_1.png' %}" width="400" height="290" loading="lazy" alt="Golden Set of Eternity – legendary armor" class="img-cover">
                             </figure>
 
                             <div class="card-content">
@@ -292,7 +292,7 @@
                         <div class="blog-card">
 
                             <figure class="card-banner img-holder" style="--width: 400; --height: 290;">
-                                <img src="./assets/image/blog_2.png" width="400" height="290" loading="lazy" alt="Soar through the skies" class="img-cover">
+                                <img src="{% static 'homepage/assets/image/blog_2.png' %}" width="400" height="290" loading="lazy" alt="Soar through the skies" class="img-cover">
                             </figure>
 
                             <div class="card-content">
@@ -336,7 +336,7 @@
                         <div class="blog-card">
 
                             <figure class="card-banner img-holder" style="--width: 400; --height: 290;">
-                                <img src="./assets/image/blog_3.png" width="400" height="290" loading="lazy" alt="Defense Of The Ancients" class="img-cover">
+                                <img src="{% static 'homepage/assets/image/blog_3.png' %}" width="400" height="290" loading="lazy" alt="Defense Of The Ancients" class="img-cover">
                             </figure>
 
                             <div class="card-content">
