@@ -13,8 +13,7 @@ def home(request):
 
 def about(request):
 
-    context = {
-        
+    context = {       
             'title' : 'L2Spike •  Описание сервера • Interlude • x50.000'
         }
 
