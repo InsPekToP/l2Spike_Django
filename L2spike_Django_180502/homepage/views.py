@@ -2,12 +2,29 @@ from django.shortcuts import render
 
 
 def home(request):
-    return render(request,'homepage/home.html')
+
+    context ={
+            'title' : 'L2Spike • Interlude • x50.000'
+            }
+
+
+    return render(request,'homepage/home.html', context)
 
 
 def about(request):
-    return render(request,'homepage/about.html')
+
+    context = {
+        
+            'title' : 'L2Spike •  Описание сервера • Interlude • x50.000'
+        }
+
+    return render(request,'homepage/about.html', context)
 
 
 def news(request):
-    return render(request,'homepage/news.html')
+
+    context = {
+            'title' : 'L2Spike • Новости • Interlude • x50.000'
+        }
+
+    return render(request,'homepage/news.html', context)
