@@ -96,7 +96,7 @@
                         </li>
 
                         <li>
-                            <a href="https://tiktok.com/@l2_spike?_t=ZN-8uYyVm5kClm&_r=1" target="_blank" class="social-link">
+                            <a href="https://tiktok.com/@l2_spike" target="_blank" class="social-link">
                                 <ion-icon name="logo-tiktok"></ion-icon>
                             </a>
                         </li>
@@ -121,20 +121,23 @@
                 <nav class="navbar" data-navbar>
                     <ul class="navbar-list">
                         <li class="navbar-item">
-                            <a href="#home" class="navbar-link skewBg" data-nav-link>Главная</a>
+                            <a href="{% url 'home' %}" class="navbar-link skewBg" data-nav-link>Главная</a>
                         </li>
 
                         <li class="navbar-item">
-                            <a href="#download" class="navbar-link skewBg" data-nav-link>Файлы</a>
+                            <a href="/#download" class="navbar-link skewBg" data-nav-link>Файлы</a>
                         </li>
-
+                    {% if request.resolver_match.url_name != 'about' %}
                         <li class="navbar-item">
-                            <a href="about.html"  class="navbar-link skewBg" data-nav-link>О сервере</a>
+                            <a href="{% url 'about' %}"  class="navbar-link skewBg" data-nav-link>О сервере</a>
                         </li>
+                    {% endif %}
 
+                    {% if request.resolver_match.url_name != 'news' %}
                         <li class="navbar-item">
-                            <a href="news.html" class="navbar-link skewBg" data-nav-link>Новости</a>
+                            <a href="{% url 'news' %}" class="navbar-link skewBg" data-nav-link>Новости</a>
                         </li>
+                    {% endif %}
 
                     </ul>
                 </nav>
@@ -143,7 +146,7 @@
                 <div class="header-actions">
                     
 
-                    <a href="#download">
+                    <a href="/#download">
                         <button class="download-btn" aria-label="download">
                             <ion-icon name="download-outline"></ion-icon>
 
@@ -219,24 +222,28 @@
                 </li>
 
                 <li>
-                    <a href="#home" class="footer-link">Главная</a>
+                    <a href="/" class="footer-link">Главная</a>
                 </li>
 
                 <li>
-                    <a href="#download" class="footer-link">Файлы</a>
+                    <a href="/#download" class="footer-link">Файлы</a>
                 </li>
                 
                 <li>
-                    <a href="#instruction" class="footer-link">Инструкция по установке</a>
+                    <a href="/#instruction" class="footer-link">Инструкция по установке</a>
                 </li>
 
+            {% if request.resolver_match.url_name != 'about' %}
                 <li>
-                    <a href="about.html" class="footer-link">О сервере</a>
+                    <a href="{% url 'about' %}" class="footer-link">О сервере</a>
                 </li>
+            {% endif %}
 
+            {% if request.resolver_match.url_name != 'news' %}
                 <li>
-                    <a href="news.html" class="footer-link">Новости</a>
+                    <a href="{% url 'news' %}" class="footer-link">Новости</a>
                 </li>
+            {% endif %}
 
             </ul>
 
@@ -247,11 +254,11 @@
                 </li>
 
                 <li>
-                    <a href="https://drive.google.com/file/d/1iwuCteEMiIrnz7s6mhDp9xCR89xUeDOT/view?usp=sharing" target="_blank" class="footer-link">Клиент игры</a>
+                    <a href="https://drive.google.com/file/d/11NVgmd4xPz6GocObl_D7Trm62eXF88jG/view?usp=sharing" target="_blank" class="footer-link">Клиент игры</a>
                 </li>
 
                 <li>
-                    <a href="https://drive.google.com/file/d/1_VjNsw4MvckLfJjK8_8UzG0hVKb9NTMY/view?usp=sharing" target="_blank" class="footer-link">Patch игры</a>
+                    <a href="https://drive.google.com/file/d/1soJd1i1U8FWFWWjYv-6Ac1uQ_Cg4u--T/view?usp=sharing" target="_blank" class="footer-link">Patch игры</a>
                 </li>
                 
 
@@ -277,7 +284,7 @@
                         </li>
 
                         <li>
-                            <a href="https://tiktok.com/@l2_spike?_t=ZN-8uYyVm5kClm&_r=1" target="_blank" class="social-link" style="background-color: #010101;">
+                            <a href="https://tiktok.com/@l2_spike" target="_blank" class="social-link" style="background-color: #010101;">
                                 <ion-icon name="logo-tiktok"></ion-icon>
                             </a>
                         </li>
