@@ -1,0 +1,412 @@
+{% extends 'homepage/base.html' %}
+
+{% load static %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block content %}
+
+    <main>
+    <article>
+
+    <!-- HERO -->
+
+        <section class="section hero" id="home" aria-label="home" style="background-image: url('{% static 'homepage/assets/image/hero_bg.png' %}');">
+            <div class="container">
+
+                <div class="hero-content">
+
+                    <p class="hero-subtitle">Регистрация <span class="span">Lineage 2</span></p>
+
+                    <h1 class="h1 hero-title">
+                        Новый <span class="span">Interlude</span>x50.000
+                    </h1>
+
+                    <p class="hero-text">L2Spike – новый PvP-сервер Lineage 2 на хрониках Interlude с рейтами x50.000. В данный момент сервер находится на стадии разработки. Мы создаем уникальный игровой мир с динамичными PvP-сражениями, сбалансированной экономикой и интересными ивентами. Следите за новостями и будьте в числе первых, кто откроет для себя L2Spike!</p>
+
+                    <a href="/#download" class="hero-link">
+                        <button class="btn skewBg">Начать играть</button>
+                    </a>
+
+                </div>
+
+                <figure class="hero-banner img-holder" style="--width: 700 ;--height: 700 ;">
+                    <img src="{% static 'homepage/assets/image/hero_banner1.png' %}" width="700" height="700" alt="hero banner" class="w-100">
+                </figure>
+
+            </div>
+        </section>
+
+
+
+    <!-- BRAND -->
+
+        <section class="section brand" aria-label="brand">
+            <div class="container">
+
+                <ul class="has-scrollbar">
+
+                    <li class="brand-item">
+                        <img src="{% static 'homepage/assets/image/brand_1.png' %}" width="90" height="90" loading="lazy" alt="brand logo">
+                    </li>
+
+                    <li class="brand-item">
+                        <img src="{% static 'homepage/assets/image/brand_2.png' %}" width="90" height="90" loading="lazy" alt="brand logo">
+                    </li>
+
+                    <li class="brand-item">
+                        <img src="{% static 'homepage/assets/image/brand_3.png' %}" width="90" height="90" loading="lazy" alt="brand logo">
+                    </li>
+
+                    <li class="brand-item">
+                        <img src="{% static 'homepage/assets/image/brand_4.png' %}" width="90" height="90" loading="lazy" alt="brand logo">
+                    </li>
+                    <li class="brand-item">
+                        <img src="{% static 'homepage/assets/image/brand_5.png' %}" width="90" height="90" loading="lazy" alt="brand logo">
+                    </li>
+
+                    <li class="brand-item">
+                        <img src="{% static 'homepage/assets/image/brand_6.png' %}" width="90" height="90" loading="lazy" alt="brand logo">
+                    </li>
+
+                </ul>
+
+            </div>
+        </section>
+
+
+
+
+
+
+        <div class="section-wrapper">
+
+
+            <!-- DOWNLOAD GAME -->
+
+            <section class="section download-game" id="download" aria-label="download game">
+                <div class="container">
+
+                    <p class="section-subtitle">Чтобы Начать игру</p>
+
+                    <h2 class="h2 section-title">
+                        Сделай <span class="span">3 Шага</span>
+                    </h2>
+
+                    <ul class="has-scrollbar">
+
+                        <li class="scrollbar-item">
+                            <div class="download-card">
+
+                                <figure class="card-banner img-holder" style="--width: 300; --height: 260;">
+                                    <img src="{% static 'homepage/assets/image/dwn_client_1.jpg' %}" width="300" height="260" loading="lazy" alt="Download client" class="img-cover">
+                                </figure>
+
+                                <div class="card-content">
+
+                                    <span class="card-badge skewBg">Шаг - 1</span>
+
+                                    <h3 class="h3">
+                                        <a href="https://drive.google.com/file/d/11NVgmd4xPz6GocObl_D7Trm62eXF88jG/view?usp=sharing" class="card-title" target="_blank">Скачай клиент Игры</a>
+                                    </h3>
+
+                                    <div class="card-wrapper">
+                                        <a href="https://drive.google.com/file/d/11NVgmd4xPz6GocObl_D7Trm62eXF88jG/view?usp=sharing" target="_blank">
+                                            <p class="card-price">С Google диска</p>
+                                        </a>
+                                    
+                                        <a href="https://drive.google.com/file/d/11NVgmd4xPz6GocObl_D7Trm62eXF88jG/view?usp=sharing" target="_blank">
+                                            <button class="card-btn">
+                                                <ion-icon name="cloud-download"></ion-icon>
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="scrollbar-item">
+                            <div class="download-card">
+
+                                <figure class="card-banner img-holder" style="--width: 300; --height: 260;">
+                                    <img src="{% static 'homepage/assets/image/dwn_patch_2.jpg' %}" width="300" height="260" loading="lazy" alt="Download Patch" class="img-cover">
+                                </figure>
+
+                                <div class="card-content">
+
+                                    <span class="card-badge skewBg">Шаг - 2</span>
+
+                                    <h3 class="h3">
+                                        <a href="https://drive.google.com/file/d/1soJd1i1U8FWFWWjYv-6Ac1uQ_Cg4u--T/view?usp=sharing" class="card-title" target="_blank">Скачай патч</a>
+                                    </h3>
+
+                                    <div class="card-wrapper">
+                                        <a href="https://drive.google.com/file/d/1soJd1i1U8FWFWWjYv-6Ac1uQ_Cg4u--T/view?usp=sharing" target="_blank">
+                                            <p class="card-price">С Google диска</p>
+                                        </a>
+                                    
+                                        <a href="https://drive.google.com/file/d/1soJd1i1U8FWFWWjYv-6Ac1uQ_Cg4u--T/view?usp=sharing" target="_blank">
+                                            <button class="card-btn">
+                                                <ion-icon name="cloud-download"></ion-icon>
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="scrollbar-item">
+                            <div class="download-card">
+
+                                <figure class="card-banner img-holder" style="--width: 300; --height: 260;">
+                                    <img src="{% static 'homepage/assets/image/dwn_login_3.jpg' %}" width="300" height="260" loading="lazy" alt="Auto Registration" class="img-cover">
+                                </figure>
+
+                                <div class="card-content">
+
+                                    <span class="card-badge skewBg">Шаг - 3</span>
+
+                                    <h3 class="h3">
+                                        <span class="card-title">Заходи в игру</span>
+                                    </h3>
+
+                                    <div class="card-wrapper">
+                                        <p class="card-price">Включена Авторегистрация </p>
+                                    
+
+                                        <!-- <button class="card-btn">
+                                            <ion-icon name="cloud-download"></ion-icon>
+                                        </button> -->
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                       
+                    </ul>
+
+                </div>
+            </section>
+
+
+
+            <!-- INSTALLATION GUIDE -->
+
+            <section class="section instruction-video" id="instruction" aria-label="Instruction video">
+                <div class="container">
+
+                    <h2 class="h2 section-title">
+                        Инструкция по <span class="span">Установке игры</span>
+                    </h2>
+
+                    <figure class="instruction-video-banner img-holder" style="--width: 800; --height: 470;" id="videoWrapper">
+                        
+                        <img src="{% static 'homepage/assets/image/instruction_banner.png' %}" width="800" height="470" loading="lazy" alt="Install Video" class="img-cover">
+
+                        <button class="play-btn" aria-label="play video" id="playButton">
+                            <ion-icon name="play"></ion-icon>
+                        </button>
+
+                    </figure>
+
+                </div>
+            </section>
+
+            <!-- END INSTALLATION GUIDE -->
+
+        </div>
+
+
+        <!-- FEATURED GAME -->
+
+        <!-- END FEATURED GAME -->
+
+
+
+        <!-- SHOP -->
+        
+        <!-- END SHOP -->
+
+
+        <!-- BLOG -->
+         
+
+        <section class="section blog" id="blog" aria-label="blog">
+            <div class="container">
+
+
+                <h2 class="h2 section-title">
+                    Новости сервера & <span class="span">Обновления</span>
+                </h2>
+
+                <p class="section-text">
+                    Все самые свежие новости о разработке, обновлениях и ивентах на сервере L2Spike — будь в курсе
+                </p>
+
+                <ul class="blog-list">
+
+                    <li>
+                        <div class="blog-card">
+
+                            <figure class="card-banner img-holder" style="--width: 400; --height: 290;">
+                                <img src="{% static 'homepage/assets/image/blog_1.png' %}" width="400" height="290" loading="lazy" alt="Golden Set of Eternity – legendary armor" class="img-cover">
+                            </figure>
+
+                            <div class="card-content">
+
+                                <ul class="card-meta-list">
+
+                                    <li class="card-meta-item">
+                                        <ion-icon name="person-outline"></ion-icon>
+
+                                        <a href="#blog" class="item-text">Admin</a>
+                                    </li>
+
+                                    <li class="card-meta-item">
+                                        <ion-icon name="calendar-outline"></ion-icon>
+
+                                        <time datetime="2025-03-14" href="#blog" class="item-text">Март 14, 2025</time>
+                                    </li>
+
+                                </ul>
+
+                                <h3>
+                                    <a href="{% url 'news' %}" class="card-title">Золотой сет Вечности!</a>
+                                </h3>
+
+                                <p class="card-text">
+                                    Золотой сет Вечности уже в игре, доступен при создании персонажа!
+                                </p>
+
+                                <a href="{% url 'news' %}" class="card-link">
+                                    <span class="span">Подробнее</span>
+
+                                    <ion-icon name="caret-forward"></ion-icon>
+                                </a>
+
+                            </div>
+
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="blog-card">
+
+                            <figure class="card-banner img-holder" style="--width: 400; --height: 290;">
+                                <img src="{% static 'homepage/assets/image/blog_2.png' %}" width="400" height="290" loading="lazy" alt="Soar through the skies" class="img-cover">
+                            </figure>
+
+                            <div class="card-content">
+
+                                <ul class="card-meta-list">
+
+                                    <li class="card-meta-item">
+                                        <ion-icon name="person-outline"></ion-icon>
+
+                                        <a href="#blog" class="item-text">Admin</a>
+                                    </li>
+
+                                    <li class="card-meta-item">
+                                        <ion-icon name="calendar-outline"></ion-icon>
+
+                                        <time datetime="2025-03-01" href="#blog" class="item-text">Март 01, 2019</time>
+                                    </li>
+
+                                </ul>
+
+                                <h3>
+                                    <a href="{% url 'news' %}" class="card-title">Парите в небесах!</a>
+                                </h3>
+
+                                <p class="card-text">
+                                    Прокачайте стиль на L2Spike! Новые крылья уже в игре — выделитесь с самого старта!
+                                </p>
+
+                                <a href="{% url 'news' %}" class="card-link">
+                                    <span class="span">Подробнее</span>
+
+                                    <ion-icon name="caret-forward"></ion-icon>
+                                </a>
+
+                            </div>
+
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="blog-card">
+
+                            <figure class="card-banner img-holder" style="--width: 400; --height: 290;">
+                                <img src="{% static 'homepage/assets/image/blog_3.png' %}" width="400" height="290" loading="lazy" alt="Defense Of The Ancients" class="img-cover">
+                            </figure>
+
+                            <div class="card-content">
+
+                                <ul class="card-meta-list">
+
+                                    <li class="card-meta-item">
+                                        <ion-icon name="person-outline"></ion-icon>
+
+                                        <a href="#blog" class="item-text">Admin</a>
+                                    </li>
+
+                                    <li class="card-meta-item">
+                                        <ion-icon name="calendar-outline"></ion-icon>
+
+                                        <time datetime="2025-02-19" href="#blog" class="item-text">Февраль 19, 2025</time>
+                                    </li>
+
+                                </ul>
+
+                                <h3>
+                                    <a href="{% url 'news' %}" class="card-title">Старт тестового сервера <span class="span">"pre-Alfa"!</span></a>
+                                </h3>
+
+                                <p class="card-text">
+                                    Тестовый сервер preAlfa уже запущен! Присоединяйтесь, чтобы первыми испытать L2Spike!
+                                </p>
+
+                                <a href="{% url 'news' %}" class="card-link">
+                                    <span class="span">Подробнее</span>
+
+                                    <ion-icon name="caret-forward"></ion-icon>
+                                </a>
+
+                            </div>
+
+                        </div>
+                    </li>
+
+                </ul>
+
+            </div>
+        </section>
+
+
+        <!-- SITE NAVIGATION-->
+
+
+        <section class="navigation" aria-label="navigation">
+            <div class="container">
+
+                <div class="navigation-card">
+
+                    <h2 class="h2">
+                        Навигация <span class="span">Сайта</span>
+                    </h2>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!--END SITE NAVIGATION-->
+
+    </article>
+</main>
+
+{% endblock %}
