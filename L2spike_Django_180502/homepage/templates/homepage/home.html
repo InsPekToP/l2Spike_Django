@@ -13,8 +13,20 @@
     <!-- HERO -->
 
         <section class="section hero" id="home" aria-label="home" style="background-image: url('{% static 'homepage/assets/image/hero_bg.png' %}');">
-            <div class="container">
+            
+                {% if messages %}
 
+                        <div class="messages">
+                            {% for mess in messages %}
+                                <div class="alert"><span class="span">{{ mess }}</span>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                {% endif %}
+                                 
+            <div class="container">
+                
                 <div class="hero-content">
 
                     <p class="hero-subtitle">Мировая Игра <span class="span">Lineage 2</span></p>

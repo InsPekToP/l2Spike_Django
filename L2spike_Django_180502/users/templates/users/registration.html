@@ -20,11 +20,14 @@
 
                     <p class="hero-subtitle">Регистрация <span class="span"></span></p>
 
-                    {% csrf_token %}
+                    <form method="POST" action="">
 
-                    {{form.as_p}}
+                        {% csrf_token %}
 
-                    <button type="submit">Нажми</button>
+                        {{ form.as_p }}
+                        
+                        <button type="submit">Зарегистрироваться</button>
+                    </form>
 
                 </div>
 
