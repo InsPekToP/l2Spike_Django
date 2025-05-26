@@ -18,7 +18,13 @@
 
                 <div class="hero-content">
 
-                    <p class="hero-subtitle">Регистрация <span class="span">Lineage 2</span></p>
+                    <p class="hero-subtitle">Регистрация <span class="span"></span></p>
+
+                    {% csrf_token %}
+
+                    {{form.as_p}}
+
+                    <button type="submit">Нажми</button>
 
                 </div>
 
