@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from . forms import UserRegisterForm
 from django.contrib import messages
 
-from users.models import TestUser
+from users.models import Accounts
 
 
 # from django.contrib.auth.forms import UserCreationForm
@@ -21,15 +21,15 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get('username')
+            login = form.cleaned_data.get('login')
             password = form.cleaned_data.get('password1')
 
-            TestUser.objects.using('test').create(
-                username=username,
+            Accounts.objects.using('test').create(
+                login=login,
                 password=password
             )
 
-            messages.success(request,f'Пользователь {username} был успешно создан!')
+            messages.success(request,f'Пользователь {login} был успешно создан!')
             return redirect('home')
         
 
