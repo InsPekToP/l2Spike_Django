@@ -127,6 +127,7 @@
                         <li class="navbar-item">
                             <a href="/#download" class="navbar-link skewBg" data-nav-link>Файлы</a>
                         </li>
+
                     {% if request.resolver_match.url_name != 'about' %}
                         <li class="navbar-item">
                             <a href="{% url 'about' %}"  class="navbar-link skewBg" data-nav-link>О сервере</a>
@@ -138,6 +139,14 @@
                             <a href="{% url 'news' %}" class="navbar-link skewBg" data-nav-link>Новости</a>
                         </li>
                     {% endif %}
+
+                    {% if request.resolver_match.url_name != 'reg' %}
+                        <li class="navbar-item">
+                            <a href="{% url 'reg' %}" class="navbar-link skewBg" data-nav-link>Регистрация</a>
+                        </li>
+                    {% endif %}
+
+
 
                     </ul>
                 </nav>
