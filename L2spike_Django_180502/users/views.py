@@ -53,6 +53,9 @@ from .forms import UserRegisterForm
 from users.models import Accounts
 from django.db import IntegrityError
 
+import hashlib
+import base64
+
 def register(request):
     if request.method == "POST":
         form = UserRegisterForm(request.POST)
@@ -72,9 +75,13 @@ def register(request):
             try:
                 # Проверка: login уже есть в Accounts?
                 if not Accounts.objects.using('test').filter(login=login).exists():
+                    # Хешируем пароль
+                    sha_hash = hashlib.sha1(password.encode('utf-8')).digest()
+                    encoded_password = base64.b64encode(sha_hash).decode('utf-8')
+
                     Accounts.objects.using('test').create(
                         login=login,
-                        password=password,  # в идеале — тоже хешировать или хранить как-то безопаснее
+                        password=encoded_password,  # в идеале — тоже хешировать или хранить как-то безопаснее
                         # email=form.cleaned_data.get('email')
                     )
             except IntegrityError:
