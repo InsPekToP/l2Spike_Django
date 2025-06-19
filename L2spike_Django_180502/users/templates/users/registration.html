@@ -18,16 +18,99 @@
 
                 <div class="hero-content">
 
-                    <p class="hero-subtitle">Регистрация <span class="span"></span></p>
+                    <!-- FORM_REGISTER -->
 
-                    <form method="POST" action="">
+
+                    <section class="form_register" aria-label="form_register">
+                        <!-- <div class="container_"> -->
+
+                            <div class="form_register-card">
+
+                                <h2 class="h2">
+                                    Our <span class="span">Newsletter</span>
+                                </h2>
+
+                                <form action="" class="form_register-form">
+
+                                    <div class="input-wrapper skewBg">
+                                        <input type="email" name="email-address" id="" aria-label="email" placeholder="Enter your email..." required class="email-field">
+
+                                        <ion-icon name="mail-outline"></ion-icon>
+                                    </div>
+
+
+                                    <div class="input-wrapper skewBg">
+                                        <input type="email" name="email-address" id="" aria-label="email" placeholder="Enter your email..." required class="email-field">
+
+                                        <ion-icon name="mail-outline"></ion-icon>
+                                    </div>
+
+                                    <button type="submit" class="btn form_register-btn skewBg">
+                                        <span class="span">Subscribe</span>
+
+                                        <ion-icon name="paper-plane" aria-hidden="true"></ion-icon>
+                                    </button>
+
+                                </form>
+
+                            </div>
+
+                        <!-- </div> -->
+                    </section>
+
+
+                    <!-- <form method="POST" action="">
 
                         {% csrf_token %}
 
                         {{ form.as_p }}
                         
                         <button type="submit">Зарегистрироваться</button>
+                    </form> -->
+
+                    <form method="POST" action="">
+                    {% csrf_token %}
+
+                    <p>
+                        <label for="{{ form.login.id_for_label }}">Введите логин:</label>
+                        <div class="input-wrapper skewBg">
+                        {{ form.login }}
+                        <ion-icon name="person-outline"></ion-icon>
+                        </div>
+                    </p>
+
+                    <p>
+                        <label for="{{ form.email.id_for_label }}">Введите Email:</label>
+                        <div class="input-wrapper skewBg">
+                        {{ form.email }}
+                        <ion-icon name="mail-outline"></ion-icon>
+                        </div>
+                    </p>
+
+                    <p>
+                        <label for="{{ form.password1.id_for_label }}">Введите пароль:</label>
+                        <div class="input-wrapper skewBg">
+                        {{ form.password1 }}
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        </div>
+                    </p>
+
+                    <p>
+                        <label for="{{ form.password2.id_for_label }}">Потвердите пароль:</label>
+                        <div class="input-wrapper skewBg">
+                        {{ form.password2 }}
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        </div>
+                    </p>
+
+                    <button type="submit" class="btn newsletter-btn skewBg">
+                        <span class="span">Зарегистрироваться</span>
+                        <ion-icon name="person-add-outline" aria-hidden="true"></ion-icon>
+                    </button>
                     </form>
+
+
+
 
                     {% if messages %}
 
