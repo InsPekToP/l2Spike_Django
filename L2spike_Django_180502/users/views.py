@@ -2,7 +2,6 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from .forms import UserRegisterForm
 from users.models import Accounts
-from django.contrib.auth.models import User
 from django.db import IntegrityError
 
 import hashlib
