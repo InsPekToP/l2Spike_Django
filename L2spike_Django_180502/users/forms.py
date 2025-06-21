@@ -9,24 +9,24 @@ class UserRegisterForm(UserCreationForm):
         required = True,
         max_length = 14,
         # help_text ='Нельзя вводить символы: @,/,&,!,?',
-        widget = forms.TextInput(attrs={'class':'email-field', 'placeholder':'Введите логин'})
+        widget = forms.TextInput(attrs={'class':'input-field', 'placeholder':'Введите логин'})
     )
     email = forms.EmailField(
         label = 'Введите Email',
         required = True,
         max_length = 100,
-        widget = forms.TextInput(attrs={'class':'email-field', 'placeholder':'Введите Email'})
+        widget = forms.TextInput(attrs={'class':'input-field', 'placeholder':'Введите Email'})
     )
     password1 = forms.CharField(
         label = 'Введите пароль',
         required = True,
         # help_text= 'Пароль не долженм быть коротким и простым',
-        widget = forms.PasswordInput(attrs={'class':'email-field', 'placeholder':'Введите Пароль'})
+        widget = forms.PasswordInput(attrs={'class':'input-field', 'placeholder':'Введите Пароль'})
     )
     password2 = forms.CharField(
         label = 'Потвердите пароль',
         required = True,
-        widget = forms.PasswordInput(attrs={'class':'email-field', 'placeholder':'Введите Пароль'})
+        widget = forms.PasswordInput(attrs={'class':'input-field', 'placeholder':'Подтвердите Пароль'})
     )
 
 

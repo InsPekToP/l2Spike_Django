@@ -1991,7 +1991,7 @@ h1,h2,h3 {
     margin-block-end: 10px;
 }
 
-.form_register .email-field {
+.form_register .input-field {
     font-size: var(--fs-9);
     color: var(--white);
     font-weight: var(--fw-500);
