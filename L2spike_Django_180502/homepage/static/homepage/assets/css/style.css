@@ -1226,7 +1226,7 @@ h1,h2,h3 {
 
     .cart-badge {
         position: absolute;
-        top: -6px;
+        top: -20px;
         right: -10px;
         background-color: var(--marigold);
         color: var(--eerie-black-1);

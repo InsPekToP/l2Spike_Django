@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from .forms import UserRegisterForm
 from users.models import Accounts
 from django.db import IntegrityError
+from django.contrib.auth.decorators import login_required
 
 import hashlib
 import base64
@@ -61,3 +62,8 @@ def register(request):
     context['form'] = form  # Добавляем форму в контекст
     # return render(request, 'users/registration.html', {'form': form})
     return render(request, 'users/registration.html', context)
+
+
+@login_required
+def profile(request):
+    return render(request, 'users/profile.html')
