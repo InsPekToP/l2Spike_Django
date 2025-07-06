@@ -40,6 +40,21 @@
                                 <span class="span">{{user.username}}</span>
                                 <span class="span">{{user.email}}</span>
                             </h2>
+
+
+                            <h2 class="h2">
+                                <span class="span">Аккаунты:</span>
+                        {% if account %}
+                                <span class="span">Логин: {{account.login}}</span>
+                                <span class="span">Пароль: {{account.password}}</span>                           
+                            </h2>
+                        {% else %}
+
+                            <h2 class="h2">
+                                <span class="span">Аккаунт не создан</span>                         
+                            </h2>
+
+                        {% endif %}
                         </div>
                     </section>
 

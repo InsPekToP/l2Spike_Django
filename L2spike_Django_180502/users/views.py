@@ -66,4 +66,16 @@ def register(request):
 
 @login_required
 def profile(request):
-    return render(request, 'users/profile.html')
+    user = request.user
+    # print("Django username:", user.username)  # ← Проверка
+    
+    try:
+        #Получаем аккаунт из второй БД(test) по логину пользователя Django
+        account = Accounts.objects.using('test').get(login=user.username)
+        # print("Accounts login:", account.login)  # ← Проверка
+    except Accounts.DoesNotExist:
+        account = None
+    return render(request, 'users/profile.html',{
+        'user': user,
+        'account': account,
+    })
