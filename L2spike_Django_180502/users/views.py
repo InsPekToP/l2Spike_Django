@@ -1,9 +1,11 @@
 from django.contrib import messages
+from django.contrib.auth import login as auth_login
 from django.shortcuts import render, redirect
-from .forms import UserRegisterForm
-from users.models import Accounts
 from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
+
+from .forms import UserRegisterForm
+from users.models import Accounts
 
 import hashlib
 import base64
@@ -30,6 +32,9 @@ def register(request):
                     # Создаем пользователя Django
                     user = form.save()
 
+                    #Автоматически логиним пользователя
+                    auth_login(request, user)
+
                     # Создаем запись в Accounts
                     Accounts.objects.using('test').create(
                         login=login,
@@ -47,7 +52,7 @@ def register(request):
                 return redirect('reg')
 
             messages.success(request, f'Пользователь {login} был успешно создан!')
-            return redirect('home')
+            return redirect('profile')
         
         
         else:
