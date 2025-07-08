@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from users import views as userViews
+from users.forms import UserLoginForm
 from django.contrib.auth import views as authViews
 
 urlpatterns = [
@@ -24,6 +25,7 @@ urlpatterns = [
     path('', include('homepage.urls')),
     path('', include('users.urls')),
     path('profile/', userViews.profile, name='profile'),
-    path('login/', authViews.LoginView.as_view(template_name = 'users/login.html'), name = 'login'),
+    # path('login/', authViews.LoginView.as_view(template_name = 'users/login.html'), name = 'login'),
+    path('login/', authViews.LoginView.as_view(template_name = 'users/login.html',authentication_form=UserLoginForm), name = 'login'),
     path('exit/', authViews.LogoutView.as_view(template_name = 'users/exit.html'), name = 'exit') 
 ]

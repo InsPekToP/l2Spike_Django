@@ -1991,14 +1991,23 @@ h1,h2,h3 {
     margin-block-end: 10px;
 }
 
-.form_register .input-field,
-.input-wrapper input {
+.form_register .input-field 
+/*.input-wrapper input */{
     font-size: var(--fs-9);
     color: var(--white);
     font-weight: var(--fw-500);
     padding: 17px 45px;
     padding-inline-end: 20px;
     outline: none;
+}
+
+/* EYES FOR PASSWORD */
+
+.input-wrapper span {
+    position: absolute;
+    right: 10px;
+    top:35px;
+    cursor: pointer;
 }
 
 .form_register .input-wrapper ion-icon {
@@ -2039,3 +2048,6 @@ h1,h2,h3 {
 .form_register-btn:is(:hover, :focus)::before {
     background-color: var(--white);
 }
+
+
+
