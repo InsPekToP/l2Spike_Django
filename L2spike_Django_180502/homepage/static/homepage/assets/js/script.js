@@ -99,17 +99,34 @@ document.querySelectorAll('.accordion-button').forEach(button => {
 
 // EYES FOR PASSWORD
 
-function togglePassword() {
-    const passwordField = document.getElementById("password_field");
-    const toggleIcon = document.getElementById("toggle_icon");
+// function togglePassword() {
+//     const passwordField = document.getElementById("password_field");
+//     const toggleIcon = document.getElementById("toggle_icon");
+
+//     const type = passwordField.getAttribute("type");
+
+//     if (type === "password") {
+//         passwordField.setAttribute("type", "text");
+//         toggleIcon.setAttribute("name", "eye-off-outline");
+//     } else {
+//         passwordField.setAttribute("type", "password");
+//         toggleIcon.setAttribute("name", "eye-outline");
+//     }
+// }
+
+function togglePassword(iconElement) {
+    const wrapper = iconElement.closest('.input-wrapper');
+    const passwordField = wrapper.querySelector('input[data-password-toggle="true"]');
+
+    if (!passwordField) return;
 
     const type = passwordField.getAttribute("type");
 
     if (type === "password") {
         passwordField.setAttribute("type", "text");
-        toggleIcon.setAttribute("name", "eye-off-outline");
+        iconElement.setAttribute("name", "eye-off-outline");
     } else {
         passwordField.setAttribute("type", "password");
-        toggleIcon.setAttribute("name", "eye-outline");
+        iconElement.setAttribute("name", "eye-outline");
     }
 }

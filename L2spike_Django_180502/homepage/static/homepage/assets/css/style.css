@@ -2001,14 +2001,14 @@ h1,h2,h3 {
     outline: none;
 }
 
-/* EYES FOR PASSWORD */
 
-.input-wrapper span {
+
+/* .input-wrapper .toggle_icon {
     position: absolute;
     right: 10px;
     top:35px;
     cursor: pointer;
-}
+} */
 
 .form_register .input-wrapper ion-icon {
     position: absolute;
@@ -2017,6 +2017,19 @@ h1,h2,h3 {
     left: 20px;
     color: var(--marigold);
     --ionicon-stroke-width: 50px;
+}
+
+/* EYES FOR PASSWORD */
+/* #toggle-icon-login */
+ .form_register .input-wrapper ion-icon[data-toggle-icon]{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 90%;
+    color: var(--light-gray-1);
+    --ionicon-stroke-width: 50px;
+    pointer-events:auto;
+    cursor: pointer;
 }
 
 .form_register .input-wrapper::before {

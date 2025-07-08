@@ -22,12 +22,12 @@ class UserRegisterForm(UserCreationForm):
         label = 'Введите пароль',
         required = True,
         # help_text= 'Пароль не долженм быть коротким и простым',
-        widget = forms.PasswordInput(attrs={'class':'input-field', 'placeholder':'Введите Пароль'})
+        widget = forms.PasswordInput(attrs={'class':'input-field', 'placeholder':'Введите Пароль', 'data-password-toggle':'true'})
     )
     password2 = forms.CharField(
         label = 'Потвердите пароль',
         required = True,
-        widget = forms.PasswordInput(attrs={'class':'input-field', 'placeholder':'Подтвердите Пароль'})
+        widget = forms.PasswordInput(attrs={'class':'input-field', 'placeholder':'Подтвердите Пароль', 'data-password-toggle':'true'})
     )
 
 
@@ -57,5 +57,5 @@ class UserLoginForm(AuthenticationForm):
     password = forms.CharField(
         label = 'Введите пароль',
         required = True,
-        widget = forms.PasswordInput(attrs={'class':'input-field','placeholder':'Введите пароль', 'id':'password_field'})
+        widget = forms.PasswordInput(attrs={'class':'input-field','placeholder':'Введите пароль', 'data-password-toggle':'true'})
     )
