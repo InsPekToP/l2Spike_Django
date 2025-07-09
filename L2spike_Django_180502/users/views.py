@@ -5,7 +5,7 @@ from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
 
 from .forms import UserRegisterForm
-from users.models import Accounts
+from users.models import Accounts, Characters
 
 import hashlib
 import base64
@@ -80,7 +80,14 @@ def profile(request):
         # print("Accounts login:", account.login)  # ← Проверка
     except Accounts.DoesNotExist:
         account = None
+
+    characters = []
+    if account:
+        #Получаем персонажей,связаных с аккаунтом(тоже из второй БД)
+        characters = Characters.objects.using('test').filter(account_name=account.login)
+
     return render(request, 'users/profile.html',{
         'user': user,
         'account': account,
+        'characters': characters,
     })

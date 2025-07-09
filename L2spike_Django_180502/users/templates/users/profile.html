@@ -55,6 +55,23 @@
                             </h2>
 
                         {% endif %}
+
+
+                        {% if characters %}
+                            <h2 class="h2">
+                                <span class="span">Персонажи:</span>
+                                <ul>
+                                    {% for character in characters %}
+                                        <li class="span">{{ character.char_name }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </h2>
+                            {% else %}
+
+                            <h2 class="h2">
+                                <span class="span">Персонажей не создано</span>                         
+                            </h2>
+                        {% endif %}
                         </div>
                     </section>
 
