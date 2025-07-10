@@ -2142,3 +2142,27 @@ h1,h2,h3 {
     margin-bottom: 5px;
     line-height: 1.4;
 }
+
+.form_register-downloads {
+    background-color: var(--english-violet);
+    border-radius: 10px;
+    margin: 30px 30px;
+    text-align: center;
+}
+
+.form_register-downloads .h2 {
+    padding: 10px;
+}
+
+.form_register-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin: 20px 20px;
+    padding: 20px;
+}
+
+.form_register-buttons .btn {
+    /* min-width: 220px; */
+}
