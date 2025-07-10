@@ -60,7 +60,7 @@
                                                 {{ form.password }}
                                                 <ion-icon name="lock-closed-outline"></ion-icon>
 
-                                                <ion-icon id="toggle-icon-login" data-toggle-icon = "true" name="eye-outline" onclick="togglePassword(this)"></ion-icon>
+                                                <ion-icon id="toggle-icon-login" data-toggle-icon = "true" name="eye-off-outline" onclick="togglePassword(this)"></ion-icon>
 
                                             </div>
                                         </p>
@@ -70,6 +70,14 @@
                                             <ion-icon name="log-in" aria-hidden="true"></ion-icon>
                                         </button>
                                     </form>
+
+                                    <!-- Ссылка на регистрацию -->
+                                    <div class="form_register-footer">
+                                        <p class="register-link-text">
+                                            Ещё нет аккаунта? 
+                                            <a href="{% url 'reg' %}" class="register-link">Зарегистрироваться</a>
+                                        </p>
+                                    </div>
                                 </div>
                     </section>
 

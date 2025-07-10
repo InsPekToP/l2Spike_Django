@@ -64,7 +64,7 @@
                                         {{ form.password1 }}
                                         <ion-icon name="lock-closed-outline"></ion-icon>
 
-                                        <ion-icon id="toggle-icon-login" data-toggle-icon = "true" name="eye-outline" onclick="togglePassword(this)"></ion-icon>
+                                        <ion-icon id="toggle-icon-login" data-toggle-icon = "true" name="eye-off-outline" onclick="togglePassword(this)"></ion-icon>
                                     </div>
                                 </p>
 
@@ -74,7 +74,7 @@
                                         {{ form.password2 }}
                                         <ion-icon name="lock-closed-outline"></ion-icon>
 
-                                        <ion-icon id="toggle-icon-login" data-toggle-icon = "true" name="eye-outline" onclick="togglePassword(this)"></ion-icon>
+                                        <ion-icon id="toggle-icon-login" data-toggle-icon = "true" name="eye-off-outline" onclick="togglePassword(this)"></ion-icon>
                                     </div>
                                 </p>
 
@@ -83,6 +83,14 @@
                                     <ion-icon name="person-add" aria-hidden="true"></ion-icon>
                                 </button>
                             </form>
+
+                            <!-- Ссылка на вход -->
+                                <div class="form_register-footer">
+                                    <p class="register-link-text">
+                                        Уже есть аккаунт?
+                                        <a href="{% url 'login' %}" class="register-link">Вход</a>
+                                    </p>
+                                </div>
                         </div>
                     </section>
 

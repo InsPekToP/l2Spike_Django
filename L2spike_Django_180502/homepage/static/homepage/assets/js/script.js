@@ -110,9 +110,9 @@ function togglePassword(iconElement) {
 
     if (type === "password") {
         passwordField.setAttribute("type", "text");
-        iconElement.setAttribute("name", "eye-off-outline");
+        iconElement.setAttribute("name", "eye-outline");
     } else {
         passwordField.setAttribute("type", "password");
-        iconElement.setAttribute("name", "eye-outline");
+        iconElement.setAttribute("name", "eye-off-outline");
     }
 }

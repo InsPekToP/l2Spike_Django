@@ -156,6 +156,12 @@ h1,h2,h3 {
 }
 
 .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    white-space: nowrap;
+
     margin-inline: auto;
     color: var(--eerie-black-1);
     font-size: var(--fs-8);
@@ -2099,4 +2105,40 @@ h1,h2,h3 {
     border-radius: 5px;
     text-align: center;
     /* cursor: pointer; */
+}
+
+/* Link for LOGIN and REGISTER*/
+
+.form_register-footer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.register-link {
+    color: var(--marigold);
+    text-decoration: underline;
+    font-weight: var(--fw-700);
+}
+
+/* ERROR MESSAGES */
+
+.error {
+    background-color: var(--raisin-black-2);
+    border: 1px solid var(--marigold);
+    color: var(--platinum);
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.errorlist {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.errorlist li {
+    margin-bottom: 5px;
+    line-height: 1.4;
 }
