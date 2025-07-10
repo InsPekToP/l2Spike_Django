@@ -2086,8 +2086,8 @@ h1,h2,h3 {
     margin: 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* выравнивание по центру */
-    gap: 10px; /* расстояние между логинами */
+    justify-content: center;
+    gap: 10px;
 }
 
 .login-characters li {
@@ -2098,6 +2098,5 @@ h1,h2,h3 {
     padding: 8px 16px;
     border-radius: 5px;
     text-align: center;
-    /* min-width: 100px; */
     /* cursor: pointer; */
 }
