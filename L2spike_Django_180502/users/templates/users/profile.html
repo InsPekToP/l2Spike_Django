@@ -32,48 +32,47 @@
 
                 <div class="hero-content">
 
-                    <!-- EXIT -->
+                    <!-- PROFILE -->
 
                     <section class="form_register" aria-label="form_register">
                         <div class="form_register-card">
-                            <h2 class="h2">
-                                <span class="span">{{user.username}}</span>
-                                <span class="span">{{user.email}}</span>
-                            </h2>
 
+                            {% if account %}
+                                <h2 class="h2">
+                                    <span class="span">Аккаунт: <p> {{ user.username }}</p></span>
+                                </h2>
 
-                            <h2 class="h2">
-                                <span class="span">Аккаунты:</span>
-                        {% if account %}
-                                <span class="span">Логин: {{account.login}}</span>
-                                <span class="span">Пароль: {{account.password}}</span>                           
-                            </h2>
-                        {% else %}
-
-                            <h2 class="h2">
-                                <span class="span">Аккаунт не создан</span>                         
-                            </h2>
-
-                        {% endif %}
-
-
-                        {% if characters %}
-                            <h2 class="h2">
-                                <span class="span">Персонажи:</span>
-                                <ul>
-                                    {% for character in characters %}
-                                        <li class="span">{{ character.char_name }}</li>
-                                    {% endfor %}
-                                </ul>
-                            </h2>
+                                <div class="login-email">
+                                    <span class="span">Логин: {{ account.login }}</span>
+                                    <span class="span">Эмейл: {{ user.email }}</span>
+                                </div>
                             {% else %}
+                                <h2 class="h2">
+                                    <span class="span">Аккаунт не создан</span>
+                                </h2>
+                            {% endif %}
 
-                            <h2 class="h2">
-                                <span class="span">Персонажей не создано</span>                         
-                            </h2>
-                        {% endif %}
+                            {% if characters %}
+                                <h2 class="h2">
+                                    <span class="span">Персонажи:</span>
+                                </h2>
+
+                                <div class="login-characters">
+                                    <ul>
+                                        {% for character in characters %}
+                                            <li class="span">{{ character.char_name }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% else %}
+                                <h2 class="h2">
+                                    <span class="span">Персонажей не создано</span>
+                                </h2>
+                            {% endif %}
+
                         </div>
                     </section>
+
 
                 </div>
 

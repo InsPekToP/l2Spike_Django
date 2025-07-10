@@ -1982,7 +1982,7 @@ h1,h2,h3 {
     font-size: var(--fs-4);
     text-transform: uppercase;
     text-align: center;
-    margin-block-end: 30px;
+    margin-block-end: 20px;
 }
 
 .form_register .input-wrapper {
@@ -2063,4 +2063,41 @@ h1,h2,h3 {
 }
 
 
+/* PROFILE */
+.form_register-card .span p {
+    color:var(--white)
+}
 
+.login-email {
+    text-align: center;
+    padding: 20px;
+    margin-block-end: 20px;
+    color: var(--roman-silver);
+    font-size: var(--fs-6);
+}
+
+.login-characters {
+    text-align: center;
+}
+
+.login-characters ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* выравнивание по центру */
+    gap: 10px; /* расстояние между логинами */
+}
+
+.login-characters li {
+    color: var(--white);
+    font-size: var(--fs-4);
+    font-weight: var(--fw-700);
+    background-color: var(--jet);
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-align: center;
+    /* min-width: 100px; */
+    /* cursor: pointer; */
+}
