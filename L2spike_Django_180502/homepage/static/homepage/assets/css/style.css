@@ -2143,6 +2143,9 @@ h1,h2,h3 {
     line-height: 1.4;
 }
 
+
+/* FOR DWN IN PROFILE */
+
 .form_register-downloads {
     background-color: var(--raisin-black-3);
     border-radius: 10px;
