@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from users import views as userViews
-from users.forms import UserLoginForm
+from users.forms import UserLoginForm,UserPasswordResetForm
 from django.contrib.auth import views as authViews
 
 urlpatterns = [
@@ -29,11 +29,20 @@ urlpatterns = [
     path('login/', authViews.LoginView.as_view(template_name = 'users/login.html',authentication_form=UserLoginForm), name = 'login'),
     path('exit/', authViews.LogoutView.as_view(template_name = 'users/exit.html'), name = 'exit'),
 
-    path('pass-reset/', authViews.PasswordResetView.as_view(template_name = 'users/pass_reset.html'),name='pass-reset'),
-    #эту страничку будем показывать в самую последнюю очередь
-    path('password_reset_complete/',authViews.PasswordResetCompleteView.as_view(template_name = 'users/password_reset_complete.html'),name='password_reset_complete'),
+    # path('pass-reset/', authViews.PasswordResetView.as_view(template_name = 'users/pass_reset.html'),name='pass-reset'),
+    path('pass-reset/', authViews.PasswordResetView.as_view(
+            template_name = 'users/pass_reset.html',
+            form_class=UserPasswordResetForm
+        ),
+        name='pass-reset'
+    ),
+
     #отслеживание востановление пароля
     path('password_reset_confirm/<uidb64>/<token>/',authViews.PasswordResetConfirmView.as_view(template_name = 'users/password_reset_confirm.html'),name='password_reset_confirm'),
+    
     #отслеживание отправку емейла на востановление пароля
-    path('password_reset_done/',authViews.PasswordResetDoneView.as_view(template_name = 'users/password_reset_done.html'),name='password_reset_done'),  
+    path('password_reset_done/',authViews.PasswordResetDoneView.as_view(template_name = 'users/password_reset_done.html'),name='password_reset_done'),
+
+    #эту страничку будем показывать в самую последнюю очередь
+    path('password_reset_complete/',authViews.PasswordResetCompleteView.as_view(template_name = 'users/password_reset_complete.html'),name='password_reset_complete'),
 ]

@@ -2170,6 +2170,17 @@ h1,h2,h3 {
     /* min-width: 220px; */
 }
 
+/* PASS RESET DONE */
+.reset_done-text {
+    color: var(--light-gray-2);
+    margin-block-end: 10px;
+    font-size: var(--fs-4);
+}
+
+.center {
+    text-align: center;
+}
+
 /* PASSWORD RESET CONFIRM */
 
 .password_reset-confirm {
