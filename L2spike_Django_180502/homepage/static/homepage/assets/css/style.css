@@ -2180,34 +2180,3 @@ h1,h2,h3 {
 .center {
     text-align: center;
 }
-
-/* PASSWORD RESET CONFIRM */
-
-/* .password_reset-confirm {
-    display: flex;
-    text-align: center;
-    flex-direction: column;
-    color: var(--white);
-}
-
-.password_reset-confirm p {
-    margin-inline-start: 20px;
-    margin-inline-end: 20px;
-}
-
-.password_reset-confirm label {
-    position: relative;
-    padding: 30px;
-    margin-block: 30px;
-}
-
-.password_reset-confirm input {
-    border: 2px solid var(--marigold) ;
-    padding: 10px;
-    margin-block: 20px;
-}
-
-.password_reset-confirm ul,
-.password_reset-confirm .helptext {
-    display: none;
-} */

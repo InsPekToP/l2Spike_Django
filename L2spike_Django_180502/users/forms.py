@@ -5,7 +5,8 @@ from django.contrib.auth.forms import (
     UserCreationForm,
     AuthenticationForm,
     PasswordResetForm,
-    SetPasswordForm
+    SetPasswordForm,
+    PasswordChangeForm
     )
 
 
@@ -68,7 +69,7 @@ class UserLoginForm(AuthenticationForm):
         widget = forms.PasswordInput(attrs={'class':'input-field','placeholder':'Введите пароль', 'data-password-toggle':'true'})
     )
 
-
+#Смена пароля для неавторизированного поль-ля
 class UserPasswordResetForm(PasswordResetForm):
         email = forms.EmailField(
             label = 'Введите Email',
@@ -77,7 +78,7 @@ class UserPasswordResetForm(PasswordResetForm):
             widget = forms.TextInput(attrs={'class':'input-field', 'placeholder':'Введите Email'})
     )
         
-
+#Смена пароля для неавторизированного поль-ля
 class UserSetPasswordForm(SetPasswordForm):
         new_password1 = forms.CharField(
             label="Новый пароль",
@@ -94,9 +95,30 @@ class UserSetPasswordForm(SetPasswordForm):
             label='Подтвердите пароль',
             required= True,
             strip=False,
-            widget=forms.PasswordInput({
+            widget=forms.PasswordInput(attrs={
                  'class': 'input-field',
                  'placeholder': 'Подтвердите пароль',
                  'data-password-toggle': 'true'
             }),
         )
+
+#Смена пароля для авторизированного поль-ля из ЛК(без эмейла)
+class UserPasswordChangeForm(PasswordChangeForm):
+    old_password = forms.CharField(
+        label="Текущий пароль",
+        required= True,
+        strip=False,
+        widget=forms.PasswordInput(attrs={'class': 'input-field', 'placeholder': 'Старый пароль','data-password-toggle': 'true'})
+    )
+    new_password1 = forms.CharField(
+        label="Новый пароль",
+        required= True,
+        strip=False,
+        widget=forms.PasswordInput(attrs={'class': 'input-field', 'placeholder': 'Новый пароль','data-password-toggle': 'true'})
+    )
+    new_password2 = forms.CharField(
+        label="Подтвердите новый пароль",
+        required= True,
+        strip=False,
+        widget=forms.PasswordInput(attrs={'class': 'input-field', 'placeholder': 'Повторите пароль','data-password-toggle': 'true'})
+    )

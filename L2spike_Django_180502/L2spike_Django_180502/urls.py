@@ -21,7 +21,8 @@ from django.contrib.auth import views as authViews
 from users.forms import (
     UserLoginForm,
     UserPasswordResetForm,
-    UserSetPasswordForm
+    UserSetPasswordForm,
+    UserPasswordChangeForm
     )
 
 urlpatterns = [
@@ -54,6 +55,17 @@ urlpatterns = [
         name='password_reset_confirm'
     ),
     
-    #эту страничку будем показывать в самую последнюю очередь
+    #Четвертая страничка с инфой,что пароль обновлен
     path('password_reset_complete/',authViews.PasswordResetCompleteView.as_view(template_name = 'users/password_reset_complete.html'),name='password_reset_complete'),
+
+    #Смена пароля внутри ЛК
+    # path('password-change/', authViews.PasswordChangeView.as_view(template_name='users/password_change.html'), name='password_change'),
+    path('password-change/', authViews.PasswordChangeView.as_view(
+        template_name='users/password_change.html',
+        form_class=UserPasswordChangeForm
+        ),
+        name='password_change'),
+
+    #Редирект после смены пароля
+    path('password-change-done/', authViews.PasswordChangeDoneView.as_view(template_name='users/password_change_done.html'), name='password_change_done'),
 ]
