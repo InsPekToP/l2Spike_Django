@@ -2170,7 +2170,7 @@ h1,h2,h3 {
     /* min-width: 220px; */
 }
 
-/* PASS RESET DONE */
+/* PASS RESET DONE and COMPLETE */
 .reset_done-text {
     color: var(--light-gray-2);
     margin-block-end: 10px;
@@ -2183,7 +2183,7 @@ h1,h2,h3 {
 
 /* PASSWORD RESET CONFIRM */
 
-.password_reset-confirm {
+/* .password_reset-confirm {
     display: flex;
     text-align: center;
     flex-direction: column;
@@ -2210,4 +2210,4 @@ h1,h2,h3 {
 .password_reset-confirm ul,
 .password_reset-confirm .helptext {
     display: none;
-}
+} */

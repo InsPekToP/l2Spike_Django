@@ -17,8 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from users import views as userViews
-from users.forms import UserLoginForm,UserPasswordResetForm
 from django.contrib.auth import views as authViews
+from users.forms import (
+    UserLoginForm,
+    UserPasswordResetForm,
+    UserSetPasswordForm
+    )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -42,7 +46,13 @@ urlpatterns = [
     path('password_reset_done/',authViews.PasswordResetDoneView.as_view(template_name = 'users/password_reset_done.html'),name='password_reset_done'),
 
     #Третья страничка(после перехода по ссылке из эмейла) с двумя полями ввода нового пароля
-    path('password_reset_confirm/<uidb64>/<token>/',authViews.PasswordResetConfirmView.as_view(template_name = 'users/password_reset_confirm.html'),name='password_reset_confirm'),
+    # path('password_reset_confirm/<uidb64>/<token>/',authViews.PasswordResetConfirmView.as_view(template_name = 'users/password_reset_confirm.html'),name='password_reset_confirm'),
+    path('password_reset_confirm/<uidb64>/<token>/',authViews.PasswordResetConfirmView.as_view(
+        template_name = 'users/password_reset_confirm.html',
+        form_class=UserSetPasswordForm
+        ),
+        name='password_reset_confirm'
+    ),
     
     #эту страничку будем показывать в самую последнюю очередь
     path('password_reset_complete/',authViews.PasswordResetCompleteView.as_view(template_name = 'users/password_reset_complete.html'),name='password_reset_complete'),

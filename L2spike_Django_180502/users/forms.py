@@ -26,12 +26,14 @@ class UserRegisterForm(UserCreationForm):
     password1 = forms.CharField(
         label = 'Введите пароль',
         required = True,
+        strip=False,
         # help_text= 'Пароль не долженм быть коротким и простым',
         widget = forms.PasswordInput(attrs={'class':'input-field', 'placeholder':'Введите Пароль', 'data-password-toggle':'true'})
     )
     password2 = forms.CharField(
         label = 'Потвердите пароль',
         required = True,
+        strip=False,
         widget = forms.PasswordInput(attrs={'class':'input-field', 'placeholder':'Подтвердите Пароль', 'data-password-toggle':'true'})
     )
 
@@ -62,6 +64,7 @@ class UserLoginForm(AuthenticationForm):
     password = forms.CharField(
         label = 'Введите пароль',
         required = True,
+        strip=False,
         widget = forms.PasswordInput(attrs={'class':'input-field','placeholder':'Введите пароль', 'data-password-toggle':'true'})
     )
 
@@ -73,3 +76,27 @@ class UserPasswordResetForm(PasswordResetForm):
             max_length = 100,
             widget = forms.TextInput(attrs={'class':'input-field', 'placeholder':'Введите Email'})
     )
+        
+
+class UserSetPasswordForm(SetPasswordForm):
+        new_password1 = forms.CharField(
+            label="Новый пароль",
+            required = True,
+            strip = False,
+            widget = forms.PasswordInput(attrs={
+                'class': 'input-field',
+                'placeholder': 'Введите новый пароль',
+                'data-password-toggle': 'true'
+            }),
+        )
+
+        new_password2 = forms.CharField(
+            label='Подтвердите пароль',
+            required= True,
+            strip=False,
+            widget=forms.PasswordInput({
+                 'class': 'input-field',
+                 'placeholder': 'Подтвердите пароль',
+                 'data-password-toggle': 'true'
+            }),
+        )
