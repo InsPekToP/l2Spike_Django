@@ -29,6 +29,7 @@ urlpatterns = [
     path('login/', authViews.LoginView.as_view(template_name = 'users/login.html',authentication_form=UserLoginForm), name = 'login'),
     path('exit/', authViews.LogoutView.as_view(template_name = 'users/exit.html'), name = 'exit'),
 
+    #Первая страничка(на смену пароля не авторизированного пользователя) с вводом эмейла
     # path('pass-reset/', authViews.PasswordResetView.as_view(template_name = 'users/pass_reset.html'),name='pass-reset'),
     path('pass-reset/', authViews.PasswordResetView.as_view(
             template_name = 'users/pass_reset.html',
@@ -37,12 +38,12 @@ urlpatterns = [
         name='pass-reset'
     ),
 
-    #отслеживание востановление пароля
-    path('password_reset_confirm/<uidb64>/<token>/',authViews.PasswordResetConfirmView.as_view(template_name = 'users/password_reset_confirm.html'),name='password_reset_confirm'),
-    
-    #отслеживание отправку емейла на востановление пароля
+    #Вторая страничка с инфой,что письмо отправлено
     path('password_reset_done/',authViews.PasswordResetDoneView.as_view(template_name = 'users/password_reset_done.html'),name='password_reset_done'),
 
+    #Третья страничка(после перехода по ссылке из эмейла) с двумя полями ввода нового пароля
+    path('password_reset_confirm/<uidb64>/<token>/',authViews.PasswordResetConfirmView.as_view(template_name = 'users/password_reset_confirm.html'),name='password_reset_confirm'),
+    
     #эту страничку будем показывать в самую последнюю очередь
     path('password_reset_complete/',authViews.PasswordResetCompleteView.as_view(template_name = 'users/password_reset_complete.html'),name='password_reset_complete'),
 ]
