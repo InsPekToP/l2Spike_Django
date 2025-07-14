@@ -79,13 +79,21 @@ class UserLoginForm(AuthenticationForm):
 
 #Смена пароля для неавторизированного поль-ля
 class UserPasswordResetForm(PasswordResetForm):
-        email = forms.EmailField(
-            label = 'Введите Email',
-            required = True,
-            max_length = 100,
-            widget = forms.TextInput(attrs={'class':'input-field', 'placeholder':'Введите Email'})
+    email = forms.EmailField(
+        label = 'Введите Email',
+        required = True,
+        max_length = 100,
+        widget = forms.TextInput(attrs={'class':'input-field', 'placeholder':'Введите Email'})
     )
         
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if not User.objects.filter(email__iexact=email, is_active=True).exists():
+            raise ValidationError("Пользователь с таким email не зарегистрирован.")
+        return email
+        
+
 #Смена пароля для неавторизированного поль-ля
 class UserSetPasswordForm(SetPasswordForm):
         new_password1 = forms.CharField(

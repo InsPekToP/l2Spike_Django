@@ -7,8 +7,47 @@ from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm
 from users.models import Accounts, Characters
 
+#импорты для смены пароля через емейл
+from django.contrib.auth.views import PasswordResetConfirmView
+# from django.contrib.auth.models import User
+from django.urls import reverse_lazy
+# from django.utils.encoding import force_str
+# from django.utils.http import urlsafe_base64_decode
+
 import hashlib
 import base64
+
+
+
+class CustomPasswordResetConfirmView(PasswordResetConfirmView):
+    success_url = reverse_lazy('login')  # или куда тебе нужно
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+
+        # 👇 После обновления пароля в Django — получаем пользователя
+        user = self.user
+
+        try:
+            # Обновляем пароль в test-базе (модель Accounts)
+            login = user.username  # используешь login как username
+
+            new_password = form.cleaned_data.get('new_password1')
+            sha_hash = hashlib.sha1(new_password.encode('utf-8')).digest()
+            encoded_password = base64.b64encode(sha_hash).decode('utf-8')
+
+            updated = Accounts.objects.using('test').filter(login=login).update(password=encoded_password)
+
+            if updated == 0:
+                messages.warning(self.request, f'Внимание: логин {login} не найден в базе.')
+            else:
+                messages.success(self.request, 'Пароль обновлён и синхронизирован с игрой.')
+
+        except Exception as e:
+            messages.error(self.request, f'Ошибка при обновлении пароля в базе: {e}')
+
+        return response
+
 
 
 def register(request):

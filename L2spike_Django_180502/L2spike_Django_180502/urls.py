@@ -25,6 +25,8 @@ from users.forms import (
     UserPasswordChangeForm
     )
 
+from users.views import CustomPasswordResetConfirmView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('homepage.urls')),
@@ -46,13 +48,23 @@ urlpatterns = [
     #Вторая страничка с инфой,что письмо отправлено
     path('password_reset_done/',authViews.PasswordResetDoneView.as_view(template_name = 'users/password_reset_done.html'),name='password_reset_done'),
 
-    #Третья страничка(после перехода по ссылке из эмейла) с двумя полями ввода нового пароля
+    #Третья страничка(после перехода по ссылке из эмейла) с двумя полями ввода нового пароля(Стандартная вьюха,Стандартная форма)
     # path('password_reset_confirm/<uidb64>/<token>/',authViews.PasswordResetConfirmView.as_view(template_name = 'users/password_reset_confirm.html'),name='password_reset_confirm'),
-    path('password_reset_confirm/<uidb64>/<token>/',authViews.PasswordResetConfirmView.as_view(
-        template_name = 'users/password_reset_confirm.html',
-        form_class=UserSetPasswordForm
-        ),
-        name='password_reset_confirm'
+
+    #(Стандартная вьюха,Кастомная форма)
+    # path('password_reset_confirm/<uidb64>/<token>/',authViews.PasswordResetConfirmView.as_view(
+    #     template_name = 'users/password_reset_confirm.html',
+    #     form_class=UserSetPasswordForm
+    #     ),
+    #     name='password_reset_confirm'
+    # ),
+
+    #(Кастомная вьюха,Кастомная форма)
+    path('password_reset_confirm/<uidb64>/<token>/', CustomPasswordResetConfirmView.as_view(
+    template_name = 'users/password_reset_confirm.html',
+    form_class=UserSetPasswordForm
+    ),
+    name='password_reset_confirm'
     ),
     
     #Четвертая страничка с инфой,что пароль обновлен

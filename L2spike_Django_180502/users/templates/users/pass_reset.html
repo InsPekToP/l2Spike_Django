@@ -17,12 +17,12 @@
 
             {% if messages %}
 
-                    <div class="messages">
-                        {% for mess in messages %}
-                            <div class="alert"><span class="span">{{ mess }}</span>
-                            </div>
-                        {% endfor %}
-                    </div>
+                <div class="messages">
+                    {% for mess in messages %}
+                        <div class="alert"><span class="span">{{ mess }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
 
             {% endif %}
 
@@ -43,9 +43,9 @@
                                         {% csrf_token %}
 
                                         {% if form.non_field_errors %}
-                                            <div class="error">
-                                                {{ form.non_field_errors }}
-                                            </div>
+                                            {% for error in form.non_field_errors %}
+                                                <div class="error center">{{ error }}</div>
+                                            {% endfor %}
                                         {% endif %}
 
                                         <p>
@@ -53,8 +53,11 @@
                                                 {{ form.email }}
                                                 <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
                                             </div>
+
                                             {% if form.email.errors %}
-                                                <div class="error">{{ form.email.errors }}</div>
+                                                {% for error in form.email.errors %}
+                                                    <div class="error center">{{ error }}</div>
+                                                {% endfor %}
                                             {% endif %}
                                         </p>
 
