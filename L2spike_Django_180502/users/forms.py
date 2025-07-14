@@ -21,6 +21,7 @@ class UserRegisterForm(UserCreationForm):
     email = forms.EmailField(
         label = 'Введите Email',
         required = True,
+        #Уникальный или нет эмеил
         max_length = 100,
         widget = forms.TextInput(attrs={'class':'input-field', 'placeholder':'Введите Email'})
     )
@@ -44,16 +45,23 @@ class UserRegisterForm(UserCreationForm):
         fields = ['login','email','password1','password2']
 
 
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if User.objects.filter(email__iexact=email).exists():
+            raise ValidationError('Этот email уже используется.')
+        return email
+
     
     def save(self, commit=True):
         user = super(UserCreationForm, self).save(commit=False)
         user.username = self.cleaned_data['login']  # 👈 ключевая строка
-        # user.email = self.cleaned_data['email']
+        user.email = self.cleaned_data['email']
         if commit:
             user.save()
         return user
     
 
+#Авторизация пользователя(Логин и пароль)
 class UserLoginForm(AuthenticationForm):
     username = forms.CharField(
         label ='Введите логин',
