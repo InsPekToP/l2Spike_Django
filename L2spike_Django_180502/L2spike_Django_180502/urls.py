@@ -25,7 +25,12 @@ from users.forms import (
     UserPasswordChangeForm
     )
 
-from users.views import CustomPasswordResetConfirmView
+from users.views import (
+    CustomPasswordResetConfirmView,
+    CustomPasswordChangeView
+    )
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -70,13 +75,22 @@ urlpatterns = [
     #Четвертая страничка с инфой,что пароль обновлен
     path('password_reset_complete/',authViews.PasswordResetCompleteView.as_view(template_name = 'users/password_reset_complete.html'),name='password_reset_complete'),
 
-    #Смена пароля внутри ЛК
+    #Смена пароля внутри ЛК(Стандартная вьюха,Стандартная форма)
     # path('password-change/', authViews.PasswordChangeView.as_view(template_name='users/password_change.html'), name='password_change'),
-    path('password-change/', authViews.PasswordChangeView.as_view(
-        template_name='users/password_change.html',
-        form_class=UserPasswordChangeForm
-        ),
-        name='password_change'),
+
+    #(Стандартная вьюха,Кастомная форма)
+    # path('password-change/', authViews.PasswordChangeView.as_view(
+    #     template_name='users/password_change.html',
+    #     form_class=UserPasswordChangeForm
+    #     ),
+    #     name='password_change'),
+
+    #(Кастомная вьюха,Кастомная форма)
+    path('password-change/', CustomPasswordChangeView.as_view(
+    template_name='users/password_change.html',
+    form_class=UserPasswordChangeForm
+    ),
+    name='password_change'),
 
     #Редирект после смены пароля
     path('password-change-done/', authViews.PasswordChangeDoneView.as_view(template_name='users/password_change_done.html'), name='password_change_done'),
