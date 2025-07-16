@@ -18,66 +18,6 @@ import hashlib
 import base64
 
 
-#Смена пароля для неавторизированных пользователей(через емейл)
-class CustomPasswordResetConfirmView(PasswordResetConfirmView):
-    success_url = reverse_lazy('login')
-
-    def form_valid(self, form):
-        response = super().form_valid(form)
-
-        # 👇 После обновления пароля в Django — получаем пользователя
-        user = self.user
-
-        try:
-            # Обновляем пароль в test-базе (модель Accounts)
-            login = user.username  # используешь login как username
-
-            new_password = form.cleaned_data.get('new_password1')
-            sha_hash = hashlib.sha1(new_password.encode('utf-8')).digest()
-            encoded_password = base64.b64encode(sha_hash).decode('utf-8')
-
-            updated = Accounts.objects.using('test').filter(login=login).update(password=encoded_password)
-
-            if updated == 0:
-                messages.warning(self.request, f'Внимание: логин {login} не найден в базе.')
-            else:
-                messages.success(self.request, 'Пароль обновлён и синхронизирован с игрой.')
-
-        except Exception as e:
-            messages.error(self.request, f'Ошибка при обновлении пароля в базе: {e}')
-
-        return response
-    
-
-
-class CustomPasswordChangeView(PasswordChangeView):
-    template_name = 'users/password_change.html'  # путь к твоему шаблону
-    success_url = reverse_lazy('password_change_done')  # перенаправление после смены пароля
-
-    def form_valid(self, form):
-        response = super().form_valid(form)
-
-        user = self.request.user
-        login = user.username
-        new_password = form.cleaned_data.get('new_password1')
-
-        try:
-            sha_hash = hashlib.sha1(new_password.encode('utf-8')).digest()
-            encoded_password = base64.b64encode(sha_hash).decode('utf-8')
-
-            updated = Accounts.objects.using('test').filter(login=login).update(password=encoded_password)
-
-            if updated == 0:
-                messages.warning(self.request, f'Внимание: логин {login} не найден.')
-            else:
-                messages.success(self.request, 'Пароль успешно обновлён и синхронизирован с игрой.')
-
-        except Exception as e:
-            messages.error(self.request, f'Ошибка при обновлении пароля: {e}')
-
-        return response
-
-
 
 def register(request):
     context = {
@@ -159,3 +99,65 @@ def profile(request):
         'account': account,
         'characters': characters,
     })
+
+
+
+#Смена пароля для неавторизированных пользователей(через емейл)
+class CustomPasswordResetConfirmView(PasswordResetConfirmView):
+    success_url = reverse_lazy('login')
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+
+        # 👇 После обновления пароля в Django — получаем пользователя
+        user = self.user
+
+        try:
+            # Обновляем пароль в test-базе (модель Accounts)
+            login = user.username  # используешь login как username
+
+            new_password = form.cleaned_data.get('new_password1')
+            sha_hash = hashlib.sha1(new_password.encode('utf-8')).digest()
+            encoded_password = base64.b64encode(sha_hash).decode('utf-8')
+
+            updated = Accounts.objects.using('test').filter(login=login).update(password=encoded_password)
+
+            if updated == 0:
+                messages.warning(self.request, f'Внимание: логин {login} не найден в базе.')
+            else:
+                messages.success(self.request, 'Пароль обновлён и синхронизирован с игрой.')
+
+        except Exception as e:
+            messages.error(self.request, f'Ошибка при обновлении пароля в базе: {e}')
+
+        return response
+    
+
+
+#Смена пароля для авторизированных пользователей(через ЛК)
+class CustomPasswordChangeView(PasswordChangeView):
+    template_name = 'users/password_change.html'  # путь к твоему шаблону
+    success_url = reverse_lazy('password_change_done')  # перенаправление после смены пароля
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+
+        user = self.request.user
+        login = user.username
+        new_password = form.cleaned_data.get('new_password1')
+
+        try:
+            sha_hash = hashlib.sha1(new_password.encode('utf-8')).digest()
+            encoded_password = base64.b64encode(sha_hash).decode('utf-8')
+
+            updated = Accounts.objects.using('test').filter(login=login).update(password=encoded_password)
+
+            if updated == 0:
+                messages.warning(self.request, f'Внимание: логин {login} не найден.')
+            else:
+                messages.success(self.request, 'Пароль успешно обновлён и синхронизирован с игрой.')
+
+        except Exception as e:
+            messages.error(self.request, f'Ошибка при обновлении пароля: {e}')
+
+        return response
