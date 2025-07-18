@@ -41,6 +41,9 @@ urlpatterns = [
     path('login/', authViews.LoginView.as_view(template_name = 'users/login.html',authentication_form=UserLoginForm), name = 'login'),
     path('exit/', authViews.LogoutView.as_view(template_name = 'users/exit.html'), name = 'exit'),
 
+    #Потверждение емейла
+    path('activate/<uidb64>/<token>/', userViews.activate_account, name='activate_account'),
+
     #Первая страничка(на смену пароля не авторизированного пользователя) с вводом эмейла
     # path('pass-reset/', authViews.PasswordResetView.as_view(template_name = 'users/pass_reset.html'),name='pass-reset'),
     path('pass-reset/', authViews.PasswordResetView.as_view(

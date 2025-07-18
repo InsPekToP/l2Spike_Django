@@ -1,11 +1,14 @@
 from django.contrib import messages
-from django.contrib.auth import login as auth_login
+from django.contrib.auth import login as auth_login,get_user_model
+from django.utils.http import urlsafe_base64_decode
+from django.contrib.auth.tokens import default_token_generator
 from django.shortcuts import render, redirect
 from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
 
 from .forms import UserRegisterForm
 from users.models import Accounts, Characters
+from .utils import send_activation_email
 
 #импорты для смены пароля через емейл
 from django.contrib.auth.views import PasswordResetConfirmView,PasswordChangeView
@@ -38,17 +41,26 @@ def register(request):
                     encoded_password = base64.b64encode(sha_hash).decode('utf-8')
 
                     # Создаем пользователя Django
-                    user = form.save()
+                    user = form.save(commit=False)
+                    user.is_active = False
+                    user.save()
+
+                    #Отправляем потверждение на email
+                    send_activation_email(request, user)
 
                     #Автоматически логиним пользователя
-                    auth_login(request, user)
+                    # auth_login(request, user)
 
                     # Создаем запись в Accounts
-                    Accounts.objects.using('test').create(
-                        login=login,
-                        password=encoded_password,
-                        # email=form.cleaned_data.get('email')
-                    )
+                    # Accounts.objects.using('test').create(
+                    #     login=login,
+                    #     password=encoded_password,
+                    #     # email=form.cleaned_data.get('email')
+                    # )
+
+                    # messages.success(request, f'Перейдите по ссылке в email для активации аккаунта.')
+                    # return redirect('profile')
+                    return render(request, 'users/send_email.html', {'email': user.email})
 
                 else:
                     messages.error(request, f'Логин {login} уже используется')
@@ -58,10 +70,6 @@ def register(request):
             except IntegrityError:
                 messages.error(request, f'Ошибка при создании пользователя {login}.')
                 return redirect('reg')
-
-            messages.success(request, f'Пользователь {login} был успешно создан!')
-            return redirect('profile')
-        
         
         else:
             # Форма невалидна — показать ошибки на странице
@@ -75,6 +83,34 @@ def register(request):
     context['form'] = form  # Добавляем форму в контекст
     # return render(request, 'users/registration.html', {'form': form})
     return render(request, 'users/registration.html', context)
+
+
+def activate_account(request, uidb64, token):
+    User = get_user_model()
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = User.objects.get(pk=uid)
+    except (User.DoesNotExist, ValueError, TypeError, OverflowError):
+        user = None
+
+    if user and default_token_generator.check_token(user, token):
+        user.is_active = True
+        user.save()
+
+        # 🔑 Синхронизируем в test-БД только сейчас:
+        sha_hash = hashlib.sha1(user.password.encode('utf-8')).digest()
+        encoded_password = base64.b64encode(sha_hash).decode('utf-8')
+
+        Accounts.objects.using('test').create(
+            login=user.username,
+            password=encoded_password,
+        )
+
+        messages.success(request, 'Аккаунт успешно активирован! Теперь вы можете войти.')
+        return redirect('login')
+    else:
+        messages.error(request, 'Ссылка для активации недействительна или устарела.')
+        return redirect('reg')
 
 
 @login_required
