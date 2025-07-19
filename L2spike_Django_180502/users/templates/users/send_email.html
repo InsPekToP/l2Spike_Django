@@ -1,2 +1,88 @@
-<h2>Подтверждение email отправлено</h2>
-<p>На адрес {{ email }} отправлено письмо. Пожалуйста, перейдите по ссылке внутри, чтобы активировать аккаунт.</p>
+{% extends 'homepage/base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Отправка емейла • L2Spike • Interlude • x50.000
+{% endblock %}
+
+{% block content %}
+
+<main>
+    <article>
+
+    <!-- HERO -->
+
+        <section class="section hero" id="home" aria-label="home" style="background-image: url('{% static 'homepage/assets/image/hero_bg.png' %}');">
+
+            {% if messages %}
+
+                    <div class="messages">
+                        {% for mess in messages %}
+                            <div class="alert"><span class="span">{{ mess }}</span>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+            {% endif %}
+
+
+            <div class="container">
+
+                <div class="hero-content">
+
+                    <!-- SEND EMAIL -->
+                
+                    <section class="form_register" aria-label="form_login">
+                        <div class="form_register-card center">
+                            <h2 class="h2">
+                                <span class="span">Подтверждение email отправлено</span>
+                            </h2>
+
+                            <p class="reset_done-text">
+                                <span class="span">На адрес <strong> {{ email }} </strong> отправлено письмо. Пожалуйста, перейдите по ссылке внутри,
+                                 чтобы активировать аккаунт.</span>
+                            </p>
+
+                            <button type="submit" class="btn form_register-btn skewBg">
+                                <span class="span">Отправить повторно</span>
+                                <ion-icon name="log-in" aria-hidden="true"></ion-icon>
+                            </button>
+
+                        </div>
+                        
+                    </section>
+
+
+                </div>
+
+                <figure class="hero-banner img-holder" style="--width: 700 ;--height: 700 ;">
+                    <img src="{% static 'homepage/assets/image/hero_banner1.png' %}" width="700" height="700" alt="hero banner" class="w-100">
+                </figure>
+
+            </div>
+        </section>
+
+<!-- SITE NAVIGATION-->
+
+
+        <section class="navigation" aria-label="navigation">
+            <div class="container">
+        
+                <div class="navigation-card">
+        
+                    <h2 class="h2">
+                        Навигация <span class="span">Сайта</span>
+                    </h2>
+           
+                </div>
+        
+            </div>
+        </section>
+
+<!--END SITE NAVIGATION-->
+
+    </article>
+</main>
+
+{% endblock %}

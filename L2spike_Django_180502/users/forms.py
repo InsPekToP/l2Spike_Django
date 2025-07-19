@@ -45,9 +45,17 @@ class UserRegisterForm(UserCreationForm):
         fields = ['login','email','password1','password2']
 
 
+    # def clean_email(self):
+    #     email = self.cleaned_data.get('email')
+    #     if User.objects.filter(email__iexact=email).exists():
+    #         raise ValidationError('Этот email уже используется.')
+    #     return email
+
+    #теперь email считается занятым только если пользователь активирован
     def clean_email(self):
         email = self.cleaned_data.get('email')
-        if User.objects.filter(email__iexact=email).exists():
+        existing_user = User.objects.filter(email__iexact=email, is_active=True).first()
+        if existing_user:
             raise ValidationError('Этот email уже используется.')
         return email
 

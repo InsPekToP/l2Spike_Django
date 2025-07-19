@@ -2180,3 +2180,7 @@ h1,h2,h3 {
 .center {
     text-align: center;
 }
+
+.reset_done-text strong {
+    color: var(--marigold);
+}

@@ -1,7 +1,8 @@
 from django.contrib import messages
 from django.contrib.auth import login as auth_login,get_user_model
 from django.utils.http import urlsafe_base64_decode
-from django.contrib.auth.tokens import default_token_generator
+# from django.contrib.auth.tokens import default_token_generator
+from .tokens import email_token_generator
 from django.shortcuts import render, redirect
 from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
@@ -12,7 +13,7 @@ from .utils import send_activation_email
 
 #импорты для смены пароля через емейл
 from django.contrib.auth.views import PasswordResetConfirmView,PasswordChangeView
-# from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 # from django.utils.encoding import force_str
 # from django.utils.http import urlsafe_base64_decode
@@ -32,8 +33,22 @@ def register(request):
         if form.is_valid():
             login = form.cleaned_data.get('login') or form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
+            email = form.cleaned_data.get('email')
 
             try:
+                #Проверка: есть ли пользователь с таким email, но не активирован
+                existing_user = User.objects.filter(email__iexact=email, is_active=False).first()
+                if existing_user:
+                    sha_hash = hashlib.sha1(password.encode('utf-8')).digest()
+                    encoded_password = base64.b64encode(sha_hash).decode('utf-8')
+
+                    send_activation_email(request, existing_user)
+                    request.session['encoded_password'] = encoded_password
+
+                    messages.info(request, f"Пользователь с этим email уже зарегистрирован, но не активирован. Мы повторно отправили ссылку для активации.")
+                    return render(request, 'users/send_email.html', {'email': email})
+
+
                 # Проверка на существование логина в Accounts (в тестовой БД)
                 if not Accounts.objects.using('test').filter(login=login).exists():
                     # Хешируем пароль
@@ -60,6 +75,10 @@ def register(request):
 
                     # messages.success(request, f'Перейдите по ссылке в email для активации аккаунта.')
                     # return redirect('profile')
+
+                    # Сохраняем пароль в сессию (на время)
+                    request.session['encoded_password'] = encoded_password
+
                     return render(request, 'users/send_email.html', {'email': user.email})
 
                 else:
@@ -93,21 +112,33 @@ def activate_account(request, uidb64, token):
     except (User.DoesNotExist, ValueError, TypeError, OverflowError):
         user = None
 
-    if user and default_token_generator.check_token(user, token):
+    # if user and default_token_generator.check_token(user, token):
+    if user and email_token_generator.check_token(user, token):
         user.is_active = True
         user.save()
 
-        # 🔑 Синхронизируем в test-БД только сейчас:
-        sha_hash = hashlib.sha1(user.password.encode('utf-8')).digest()
-        encoded_password = base64.b64encode(sha_hash).decode('utf-8')
+        # Синхронизируем в test-БД только сейчас:
+        # sha_hash = hashlib.sha1(user.password.encode('utf-8')).digest()
+        # encoded_password = base64.b64encode(sha_hash).decode('utf-8')
 
-        Accounts.objects.using('test').create(
-            login=user.username,
-            password=encoded_password,
-        )
+        # Берем хеш из сессии
+        encoded_password = request.session.get('encoded_password')
 
-        messages.success(request, 'Аккаунт успешно активирован! Теперь вы можете войти.')
-        return redirect('login')
+        if encoded_password:
+            Accounts.objects.using('test').create(
+                login=user.username,
+                password=encoded_password,
+            )
+            # Можно удалить из сессии, чтобы не осталось
+            del request.session['encoded_password']
+        else:
+            messages.warning(request, "Не удалось синхронизировать аккаунт")
+
+        # Авто-логин
+        auth_login(request, user)
+
+        messages.success(request, f"Аккаунт {user.username} успешно активирован! Добро пожаловать")
+        return redirect('profile')
     else:
         messages.error(request, 'Ссылка для активации недействительна или устарела.')
         return redirect('reg')

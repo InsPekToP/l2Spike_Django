@@ -1,9 +1,68 @@
-Привет, {{ user.username }}!
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добро пожаловать на L2Spike.com</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            color: #0d0d0d;
+            font-family: 'Verdana', sans-serif;
+            padding: 20px;
+        }
+        .container {
+            text-align: center;
+            background-color: #d4d3d3;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid #333;
+        }
+        h1 {
+            color: #ffcc00;
+        }
+        a.button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: #ffcc00;
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        .img-banner {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .footer {
+            font-size: 12px;
+            color: #888;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <h1>Привет, {{ user.username }}!</h1>
 
-Спасибо за регистрацию на L2Spike.com
+        <p>Ты пробудился в мире L2Spike — Interlude x50.000. Тут никому не до сна, а ты ещё даже не подтвердил почту 😅</p>
 
-Пожалуйста, подтвердите свою почту, перейдя по ссылке ниже:
+        <p>Кликай сюда, герой, чтобы активировать свой аккаунт и выйти на охоту:</p>
 
-{{ activation_url }}
+        <a href="{{ activation_url }}" class="button">🔗 Активировать аккаунт</a>
 
-Если вы не регистрировались — просто проигнорируйте это письмо.
+        <p><strong>⚠️ Внимание:</strong> Срок действия ссылки — 5 минут.</p>
+
+        <p>Если это был не ты — возможно, какой-то шутник ввёл твой email. Просто проигнорируй это письмо.</p>
+
+        <div class="footer">
+            С любовью, команда L2Spike.com ♥<br>
+            Это автоматическое сообщение — не отвечай на него. Лучше заходи в игру 😎
+        </div>
+    </div>
+</body>
+</html>
