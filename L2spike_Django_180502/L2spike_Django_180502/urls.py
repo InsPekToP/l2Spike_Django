@@ -97,4 +97,7 @@ urlpatterns = [
 
     #Редирект после смены пароля
     path('password-change-done/', authViews.PasswordChangeDoneView.as_view(template_name='users/password_change_done.html'), name='password_change_done'),
+
+    #Повторная отправка ссылки
+    path('resend-activation/', userViews.resend_activation_email, name='resend_activation_email'),
 ]

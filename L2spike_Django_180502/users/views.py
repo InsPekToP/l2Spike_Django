@@ -1,6 +1,8 @@
 from django.contrib import messages
 from django.contrib.auth import login as auth_login,get_user_model
 from django.utils.http import urlsafe_base64_decode
+from django.utils.timezone import now
+from django.utils.dateparse import parse_datetime
 # from django.contrib.auth.tokens import default_token_generator
 from .tokens import email_token_generator
 from django.shortcuts import render, redirect
@@ -15,11 +17,10 @@ from .utils import send_activation_email
 from django.contrib.auth.views import PasswordResetConfirmView,PasswordChangeView
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
-# from django.utils.encoding import force_str
-# from django.utils.http import urlsafe_base64_decode
 
 import hashlib
 import base64
+from datetime import timedelta
 
 
 
@@ -63,6 +64,9 @@ def register(request):
                     #Отправляем потверждение на email
                     send_activation_email(request, user)
 
+                    #Засекает время для повторной отправки емейла
+                    request.session['last_activation_email_sent'] = now().isoformat()
+
                     #Автоматически логиним пользователя
                     # auth_login(request, user)
 
@@ -102,6 +106,41 @@ def register(request):
     context['form'] = form  # Добавляем форму в контекст
     # return render(request, 'users/registration.html', {'form': form})
     return render(request, 'users/registration.html', context)
+
+
+
+#Повторная отправка ссылки
+def resend_activation_email(request):
+    if request.method == "POST":
+        email = request.POST.get('email')
+        user = User.objects.filter(email__iexact=email, is_active=False).first()
+
+        if not user:
+            messages.error(request, "Пользователь с таким email не найден или уже активирован.")
+            return redirect('reg')
+
+        # Проверка частоты (5 минут)
+        last_sent = request.session.get('last_activation_email_sent')
+        if last_sent:
+            last_sent_dt = parse_datetime(last_sent)
+            if now() - last_sent_dt < timedelta(minutes=5):
+                remaining = 300 - int((now() - last_sent_dt).total_seconds())
+                minutes, seconds = divmod(remaining, 60)
+                messages.warning(request, f"Вы уже запрашивали письмо недавно. Подождите ещё {minutes} мин {seconds} сек.")
+                return render(request, 'users/send_email.html', {'email': email})
+
+        # Отправляем повторно
+        send_activation_email(request, user)
+
+        # Обновляем сессию с меткой времени
+        request.session['last_activation_email_sent'] = now().isoformat()
+
+        messages.success(request, f"Письмо подтверждения повторно отправлено на {email}.")
+        return render(request, 'users/send_email.html', {'email': email})
+
+    return redirect('reg')
+
+
 
 
 def activate_account(request, uidb64, token):
