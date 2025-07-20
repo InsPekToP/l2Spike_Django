@@ -103,7 +103,7 @@
                     <p class="section-subtitle">Чтобы Начать игру</p>
 
                     <h2 class="h2 section-title">
-                        Сделай <span class="span">3 Шага</span>
+                        Сделай <span class="span">4 Шага</span>
                     </h2>
 
                     <ul class="has-scrollbar">
@@ -119,6 +119,7 @@
 
                                     <span class="card-badge skewBg">Шаг - 1</span>
 
+                                    {% if not user.is_authenticated %}
                                     <h3 class="h3">
                                         <a href="{% url 'reg' %}" class="card-title" target="_blank">Зарегистрируйся</a>
                                     </h3>
@@ -133,6 +134,23 @@
                                                 <ion-icon name="person-add"></ion-icon>
                                             </button>
                                         </a>
+
+                                    {% else %}
+                                    <h3 class="h3">
+                                        <a href="{% url 'profile' %}" class="card-title" target="_blank">O,как!</a>
+                                    </h3>
+
+                                    <div class="card-wrapper">
+                                        <a href="{% url 'profile' %}" target="_blank">
+                                            <p class="card-price">У тебя получилось :))</p>
+                                        </a>
+                                    
+                                        <a href="{% url 'profile' %}" target="_blank">
+                                            <button class="card-btn">
+                                                <ion-icon name="checkmark-done"></ion-icon>
+                                            </button>
+                                        </a>
+                                    {% endif %}    
                                     </div>
                                 </div>
 

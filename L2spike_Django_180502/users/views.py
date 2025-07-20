@@ -14,7 +14,11 @@ from users.models import Accounts, Characters
 from .utils import send_activation_email
 
 #импорты для смены пароля через емейл
-from django.contrib.auth.views import PasswordResetConfirmView,PasswordChangeView
+from django.contrib.auth.views import (
+    PasswordResetConfirmView,
+    PasswordChangeView,
+    PasswordResetView
+    )
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 
@@ -119,12 +123,14 @@ def resend_activation_email(request):
             messages.error(request, "Пользователь с таким email не найден или уже активирован.")
             return redirect('reg')
 
+        COOLDOWN_SECONDS = 300  #Только 30 секунд на тестах
+
         # Проверка частоты (5 минут)
         last_sent = request.session.get('last_activation_email_sent')
         if last_sent:
             last_sent_dt = parse_datetime(last_sent)
             if now() - last_sent_dt < timedelta(minutes=5):
-                remaining = 300 - int((now() - last_sent_dt).total_seconds())
+                remaining = COOLDOWN_SECONDS - int((now() - last_sent_dt).total_seconds())
                 minutes, seconds = divmod(remaining, 60)
                 messages.warning(request, f"Вы уже запрашивали письмо недавно. Подождите ещё {minutes} мин {seconds} сек.")
                 return render(request, 'users/send_email.html', {'email': email})
@@ -205,6 +211,13 @@ def profile(request):
         'account': account,
         'characters': characters,
     })
+
+#Кастомная вьюха для кастомного емейла
+class CustomPasswordResetView(PasswordResetView):
+    template_name = 'users/pass_reset.html'  # форма сброса
+    html_email_template_name = 'users/pass_reset_email.html'
+    subject_template_name = 'users/password_reset_subject.txt'  # всё ещё нужен заголовок
+    success_url = reverse_lazy('password_reset_done')
 
 
 

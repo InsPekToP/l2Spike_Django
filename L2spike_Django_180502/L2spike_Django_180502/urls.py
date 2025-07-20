@@ -25,10 +25,11 @@ from users.forms import (
     UserPasswordChangeForm
     )
 
-from users.views import (
-    CustomPasswordResetConfirmView,
-    CustomPasswordChangeView
-    )
+# from users.views import (
+#     CustomPasswordResetConfirmView,
+#     CustomPasswordChangeView,
+#     CustomPasswordResetView
+#     )
 
 
 
@@ -45,8 +46,19 @@ urlpatterns = [
     path('activate/<uidb64>/<token>/', userViews.activate_account, name='activate_account'),
 
     #Первая страничка(на смену пароля не авторизированного пользователя) с вводом эмейла
+    #(Стандартная вьюха,Стандартная форма)
     # path('pass-reset/', authViews.PasswordResetView.as_view(template_name = 'users/pass_reset.html'),name='pass-reset'),
-    path('pass-reset/', authViews.PasswordResetView.as_view(
+
+    #(Стандартная вьюха,Кастомная форма)
+    # path('pass-reset/', authViews.PasswordResetView.as_view(
+    #         template_name = 'users/pass_reset.html',
+    #         form_class=UserPasswordResetForm
+    #     ),
+    #     name='pass-reset'
+    # ),
+
+    #(Кастомная вьюха,Кастомная форма)
+    path('pass-reset/', userViews.CustomPasswordResetView.as_view(
             template_name = 'users/pass_reset.html',
             form_class=UserPasswordResetForm
         ),
@@ -68,7 +80,7 @@ urlpatterns = [
     # ),
 
     #(Кастомная вьюха,Кастомная форма)
-    path('password_reset_confirm/<uidb64>/<token>/', CustomPasswordResetConfirmView.as_view(
+    path('password_reset_confirm/<uidb64>/<token>/', userViews.CustomPasswordResetConfirmView.as_view(
     template_name = 'users/password_reset_confirm.html',
     form_class=UserSetPasswordForm
     ),
@@ -89,7 +101,7 @@ urlpatterns = [
     #     name='password_change'),
 
     #(Кастомная вьюха,Кастомная форма)
-    path('password-change/', CustomPasswordChangeView.as_view(
+    path('password-change/', userViews.CustomPasswordChangeView.as_view(
     template_name='users/password_change.html',
     form_class=UserPasswordChangeForm
     ),
