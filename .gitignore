@@ -17,7 +17,8 @@ settings.py
 #*.log
 
 # Статические файлы
-#static/
+static/
+staticfiles/
 
 # Папка с медиа-файлами
 #media/
