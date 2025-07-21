@@ -7,6 +7,9 @@ env/
 #Settings.py
 settings.py
 
+#IP и порт
+utils.py
+
 #Настройки VSCode
 .vscode
 
