@@ -151,35 +151,33 @@
                             <a href="{% url 'login' %}" class="navbar-link skewBg" data-nav-link>Войти</a>
                         </li>
                     
-
+                    {% else %}
                     
+                    <li class="navbar-item">
+                        <a href="{% url 'profile' %}" class="navbar-link skewBg download-btn" data-nav-link title="Личный кабинет">
+                            <ion-icon name="person-outline"></ion-icon>
+                            <span class="cart-badge">{{ user.username }}</span>
+                        </a>
+                    </li>
+
+                    <li class="navbar-item">
+                        <form action="{% url 'exit' %}" method="POST" class="logout-form">
+                            {% csrf_token %}
+                            <button type="submit" class="navbar-link skewBg download-btn" data-nav-link title="Выйти из ЛК">
+                                <ion-icon name="exit-outline"></ion-icon>
+                            </button>
+                        </form>
+                    </li>
+
+                    {% endif %}
 
                     </ul>
                 </nav>
                 
-                    {% else %}
+                   
 
                 <div class="header-actions">
                     
-
-                    <a href="{% url 'profile' %}" title="Личный кабинет">
-                        <button class="download-btn" aria-label="profile">
-                            <ion-icon name="person-outline"></ion-icon>
-
-                            <span class="cart-badge">{{user.username}}</span>
-                        </button>
-                    </a>
-
-                    <form action="{% url 'exit' %}" method="POST" title="Выйти из ЛК">
-                        {% csrf_token %}
-                        <button type="submit" class="download-btn" aria-label="exit">
-                            <ion-icon name="exit-outline"></ion-icon>
-                        </button>
-                    </form>
-                    
-
-                    {% endif %}
-                
                     <!-- <button class="person-btn" aria-label="person register" data-search-toggler>
                         <ion-icon name="person-outline"></ion-icon>
                     </button> -->

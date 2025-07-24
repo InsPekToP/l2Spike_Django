@@ -392,7 +392,7 @@ h1,h2,h3 {
 
 .navbar.active {
     visibility: visible;
-    max-height: 275px;
+    max-height: 500px;
     transition-duration: 0.5s;
 }
 
@@ -408,6 +408,24 @@ h1,h2,h3 {
 .navbar-link:is(:hover, :focus) {
     background-color: var(--white_10);
 }
+
+
+/* LOGOUT-FORM */
+/* .navbar-item .logout-form {
+    margin: 0;
+    padding: 0;
+    }
+
+.navbar-item .logout-form button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font: inherit;
+    color: inherit;
+    } */
+
 
 
 
@@ -1232,8 +1250,8 @@ h1,h2,h3 {
 
     .cart-badge {
         position: absolute;
-        top: -20px;
-        right: -10px;
+        top: 17px;
+        right: 30px;
         background-color: var(--marigold);
         color: var(--eerie-black-1);
         font-size: var(--fs-11);
@@ -1535,7 +1553,7 @@ h1,h2,h3 {
     .navbar-link {
         color: var(--white);
         font-family: var(--ff-montserrat);
-        font-size: var(--fs-11);
+        /* font-size: var(--fs-11); */
         text-transform: uppercase;
         font-weight: var(--fw-700);
         padding: 10px 20px;
@@ -1554,6 +1572,11 @@ h1,h2,h3 {
 
     .navbar-link:is(:hover, :focus)::before {
         opacity: 1;
+    }
+
+    .cart-badge {
+        top: -10px;
+        right: -20px;
     }
 
 
@@ -1676,7 +1699,7 @@ h1,h2,h3 {
     }
 
     .navbar-link {
-        font-size: var(--fs-9);
+        /* font-size: var(--fs-9); */
         padding-inline: 25px;
     }
 
