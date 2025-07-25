@@ -1217,8 +1217,26 @@ h1,h2,h3 {
     visibility: visible;
     transform: translateY(-10px);
 }
+/* Было в Small (sm) ≥ 576px */
+.download-btn {
+    display: block;
+    position: relative;
+    color: var(--white);
+    font-size: 30px;
+}
 
-
+.cart-badge {
+    position: absolute;
+    top: 17px;
+    right: 30px;
+    background-color: var(--marigold);
+    color: var(--eerie-black-1);
+    font-size: var(--fs-11);
+    border-radius: 20px;
+    padding: 3px 5px;
+    line-height: 1;
+    font-weight: var(--fw-800);
+}
 
 /* MEDIA QUERIES */
 
@@ -1241,25 +1259,9 @@ h1,h2,h3 {
         gap: 40px;
     }
 
-    .download-btn {
-        display: block;
-        position: relative;
-        color: var(--white);
-        font-size: 30px;
-    }
 
-    .cart-badge {
-        position: absolute;
-        top: 17px;
-        right: 30px;
-        background-color: var(--marigold);
-        color: var(--eerie-black-1);
-        font-size: var(--fs-11);
-        border-radius: 20px;
-        padding: 3px 5px;
-        line-height: 1;
-        font-weight: var(--fw-800);
-    }
+
+
 
 
     /* SEARCH BOX */
