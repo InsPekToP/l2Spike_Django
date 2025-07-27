@@ -1,5 +1,18 @@
 from django.db import models
 
+from django.utils.timezone import now
+import uuid
+
+
+
+#Временное хранение,для активации емейла после перехода по ссылке
+class PendingRegistration(models.Model):
+    user = models.OneToOneField('auth.User', on_delete=models.CASCADE)
+    login = models.CharField(max_length=50)
+    encoded_password = models.CharField(max_length=128)
+    created_at = models.DateTimeField(default=now)
+    token = models.UUIDField(default=uuid.uuid4, unique=True)
+
 
 class Accounts(models.Model):
     login = models.CharField(max_length=45, primary_key=True, default='')
